@@ -36,13 +36,13 @@ def AbreVideo():
     #Carrega arquivo do vídeo
     global cap
     if padrao == 0:
-        cap = cv2.VideoCapture('Códigos\Reconhecimento de Peças\Videos Teste\Porta Branca 628x607.mp4')
+        cap = cv2.VideoCapture('Videos Teste\Porta Branca 628x607.mp4')
 
     elif padrao == 1:
-        cap = cv2.VideoCapture('Códigos\Reconhecimento de Peças\Videos Teste\Peças brancas 2 por vez.mp4')
+        cap = cv2.VideoCapture('Videos Teste\Peças brancas 2 por vez.mp4')
 
     elif padrao == 2:
-        cap = cv2.VideoCapture('Códigos\Reconhecimento de Peças\Videos Teste\Peça Marrom.mp4')
+        cap = cv2.VideoCapture('Videos Teste\Peça Marrom.mp4')
 
     elif padrao == 9:
         cap = cv2.VideoCapture(0)

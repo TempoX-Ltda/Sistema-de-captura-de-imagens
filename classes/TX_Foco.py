@@ -31,7 +31,7 @@ class Focar:
        
     def cutRectangle(self, contour, image, id_obj, precision, hist):
         
-        #Desenha e separa cada peça por janela e calcula o tamanho da peça
+        # Desenha e separa cada peça por janela e calcula o tamanho da peça
         rect = cv2.minAreaRect(contour)
         box  = cv2.boxPoints(rect)
         box  = np.int0(box)

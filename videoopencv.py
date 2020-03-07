@@ -4,6 +4,7 @@
 
 import timeit
 from time import sleep
+import os
 
 import cv2
 import imutils
@@ -22,11 +23,19 @@ def self():
 def escrever(imagem, texto, x, y):
     return(cv2.putText(imagem, texto, (x, y), cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2,cv2.LINE_AA))
 
+def checkfile(arquivo):
+    if not os.path.exists(arquivo):
+        print('Caminho para arquivo não existente!')
+        exit()
+    else:
+        print('Utilizando arquivo: ' + str(arquivo))
+        pass
+
 def AbreVideo():  
     #Valida entradas dos padrões
     padroes_aceitos = [0, 1, 2, 9]
     while True:
-        padrao = int(input('Informe o padrão: \n(0) - BRANCO 628x607 \n(1) - BRANCO 2pcs CM \n(2) - BURITI CM \n(9) - TESTE ESTEIRA BRANCO \n\n'))
+        padrao = int(input('Informe o padrão: \n(0) - BRANCO 628x607 \n(1) - BRANCO 2pcs CM \n(2) - BURITI CM \n(9) - Câmera do PC \n\n'))
         
         if padrao in padroes_aceitos:
             break
@@ -36,15 +45,22 @@ def AbreVideo():
     #Carrega arquivo do vídeo
     global cap
     if padrao == 0:
-        cap = cv2.VideoCapture('Videos Teste\Porta Branca 628x607.mp4')
+        videoPath = r'Videos Teste\Porta Branca 628x607.mp4'
+        checkfile(videoPath)
+        cap = cv2.VideoCapture(videoPath)
 
     elif padrao == 1:
-        cap = cv2.VideoCapture('Videos Teste\Peças brancas 2 por vez.mp4')
+        videoPath = r'Videos Teste\Peças brancas 2 por vez.mp4'
+        checkfile(videoPath)
+        cap = cv2.VideoCapture(videoPath)
 
     elif padrao == 2:
-        cap = cv2.VideoCapture('Videos Teste\Peça Marrom.mp4')
+        videoPath = r'Videos Teste\Peça Marrom.mp4'
+        checkfile(videoPath)
+        cap = cv2.VideoCapture(videoPath)
 
-    elif padrao == 9:
+    elif padrao == 9: # Abre a câmera conectada ao PC
+        print('Utilizando câmera do PC')
         cap = cv2.VideoCapture(0)
 
     fps              = 30
@@ -69,7 +85,6 @@ def AbreVideo():
         ret, frame = cap.read()
         if ret != True: #Valida se o frame existe
             break
-
 
         counterframe   += 1
         objs_old        = objs_frame
@@ -112,13 +127,13 @@ def AbreVideo():
             start_scan = 20
             end_scan   = 450
         try:
-            for cnts in contours: #Itera entre os contornos do Frame
+            for cnts in contours: # Itera entre os contornos do Frame
 
                 quadroanterior = []
                 
                 M = cv2.moments(cnts)
 
-                if M['m00'] != 0 and cv2.contourArea(cnts) > 20000: #Valor de área minimo para reconhecer como objeto
+                if M['m00'] != 0 and cv2.contourArea(cnts) > 20000: # Valor de área minimo para reconhecer como objeto
                     
                     cX = int(M['m10'] / M['m00'])
                     cY = int(M['m01'] / M['m00'])
@@ -128,12 +143,14 @@ def AbreVideo():
 
                     if counterobj > 1:
                         if len(objs_old) != 0:
-                            for i in range(len(objs_old)): #Itera para comparar obj atual com objs do frame anterior
+                            for i in range(len(objs_old)): # Itera para comparar obj atual com objs do frame anterior
 
                                 cXa = int(objs_old[i][2])
                                 cYa = int(objs_old[i][3])
 
-                                if abs(cXa - cX) < 50 and abs(cYa - cY) < 50: #Verifica se a peça do frame anterior é a mesma do frame atual
+                                # Verifica se a peça do frame anterior é a mesma do frame atual
+                                # Utilizando como referência a posição na tela
+                                if abs(cXa - cX) < 50 and abs(cYa - cY) < 50: 
                                     obj_atual[1] = objs_old[i][1]
                                     obj_novo = False
                                     break
@@ -143,7 +160,7 @@ def AbreVideo():
                             if abs(cX - last_obj[2]) > 100:
                                 obj_novo = True
                         
-                        if obj_novo == True: #ID +1
+                        if obj_novo == True: # ID +1
                             idpeca += 1    
                             obj_atual[1] = idpeca
 
@@ -151,16 +168,16 @@ def AbreVideo():
                     objs_frame.append(obj_atual)
                     pcs_inframe.append(obj_atual[1])
 
-                    #Identifica o último objeto que passou           
+                    # Identifica o último objeto que passou           
                     for i in range(len(objs_frame)):
                         if objs_frame[i][2] < referencia:
                             referencia = objs_frame[i][2]
                             last_obj = objs_frame[i]
 
-                    #Mostra cada peça indivdualmente na tela, hist ostra também o histograma de cores
+                    # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores
                     comp_pc, larg_pc = Focar.cutRectangle(self, cnts, rotatedr, obj_atual, mmperPixel, hist = 'MatPlotLib')
                     
-                    #Escreve na imagem
+                    # Escreve na imagem
                     escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)
                     escrever(rotatedr, 'Comp {:0.1f}'.format(comp_pc)            , cX, cY-30)
                     escrever(rotatedr, 'Larg {:0.1f}'.format(larg_pc)            , cX, cY+30)       
@@ -168,7 +185,7 @@ def AbreVideo():
         except:
             pass
         
-        #Destroi as janelas das peças que sairam do quadro
+        # Destroi as janelas das peças que sairam do quadro
         for num_obj in pcs_inframe_old:
             if not num_obj in pcs_inframe:
                 cv2.destroyWindow('pc' + str(num_obj))
@@ -176,11 +193,11 @@ def AbreVideo():
         escanear = thresh.copy()
         scan = escanear[start_scan:end_scan , 219:220]
         
-        #Cria e monta a janela de "log"
+        # Cria e monta a janela de "log"
         if counterframe == 1:
             imglog = scan
         else:
-            for i in range(int(razao_horizontal/mmperPixel)): #isso pode dar problema pois está arredondando os valores
+            for i in range(int(razao_horizontal/mmperPixel)): # isso pode dar problema pois está arredondando os valores
                 imglog = np.concatenate((imglog, scan), axis=1)
         
         if imglog.shape[1] < 1300:
@@ -188,36 +205,48 @@ def AbreVideo():
         else:
             cv2.imshow("Log", imglog[1:410, -1300:-1])
         
-        #Desenha linhas e escreve na janela
+        # Desenha linhas e escreve na janela
         linegray = cv2.line(thresh,    (219, start_scan), (219, end_scan), (150),       2)
         linergb  = cv2.line(rotatedr , (219, start_scan), (219, end_scan), (0, 0, 255), 2)
         escrever(rotatedr, "{:01.2f} Metros quadrados!".format(m2)           , 10, 60)
         escrever(rotatedr, "{:0.1f} segundos".format(timeit.default_timer()) , 10, 95)
 
-        #Conta M2
+        # Conta M2
         pixels = cv2.countNonZero(scan)
         m2 += ((pixels * mmperPixel)*razao_horizontal)/1000000
 
-        #Mostra os videos
+        # Mostra os videos
         cv2.imshow("Linha UV BW", thresh)
         cv2.imshow("Linha UV rgb", rotatedr)
 
-        #Delay a partir de determinado frame
+        # Delay a partir de determinado frame
         #if counterframe > 60:    
         #   sleep(.1)
 
+        # Caso esse script esteja sendo executado como __main__
+        # será mostrado na tela do usuário as imagens do opencv,
+        # caso esse script esteja sendo executado como função de um outro script,
+        # então será retornado (tresh, rotatedr)
         if __name__ == "__main__":
-            #Tecla de escape do processo -> ESC
+            # Tecla de escape do processo -> ESC
             key = cv2.waitKey(1) 
             if key == 27:
                 break
             cv2.imshow("Linha UV BW", thresh)
             cv2.imshow("Linha UV rgb", rotatedr)
+
+        else:
+            return (thresh, rotatedr)
         
     
     print("{:0.2f} M² processados".format(m2))
     cap.release()
-    cv2.destroyAllWindows()
+
+    # Destroi as janelas somente se esse script estiver sendo 
+    # executado como __main__, pois em outro caso poderia vir
+    # a destruir janelas do processo principal
+    if __name__ == "__main__":
+        cv2.destroyAllWindows()
 
 if __name__ == "__main__":
     AbreVideo()

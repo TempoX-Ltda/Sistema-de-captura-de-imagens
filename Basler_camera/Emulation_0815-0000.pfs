@@ -1,0 +1,29 @@
+# {05D8C294-F295-4dfb-9D01-096BD04049F4}
+# GenApi persistence file (version 3.1.0)
+# Device = Basler::BaslerCamEmu -- Basler Cam Emu interface -- Device version = 1.0.0 -- Product GUID = B97DE549-CB9A-44f8-937D-64C48BDECFA3 -- Product version GUID = A2DCDE14-73E4-408a-AFA8-81852ECB5D9A
+GainRaw	192
+PixelFormat	BayerGR8
+TestImageSelector	Testimage2
+ImageFilename	
+ImageFileMode	Off
+WidthMax	4096
+HeightMax	4096
+Width	1920
+Height	1
+OffsetX	0
+OffsetY	0
+ExposureTimeAbs	10000
+ExposureTimeBaseAbs	1
+ExposureTimeRaw	10000
+AcquisitionMode	SingleFrame
+TriggerSelector	AcquisitionStart
+TriggerSelector	AcquisitionStart
+TriggerMode	Off
+TriggerSelector	AcquisitionStart
+TriggerSource	Software
+ExposureMode	Timed
+AcquisitionFrameRateEnable	1
+AcquisitionFrameRateAbs	60
+AcquisitionStatusSelector	FrameTriggerWait
+DeviceUserID	
+ForceFailedBufferCount	100

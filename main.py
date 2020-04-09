@@ -27,9 +27,9 @@ def checkfile(arquivo):
         pass
 
 #Valida entradas dos padrões
-padroes_aceitos = [0, 1, 2, 9]
+padroes_aceitos = [0, 1, 2]
 while True:
-    padrao = int(input('Informe o padrão: \n(0) - BRANCO 628x607 \n(1) - BRANCO 2pcs CM \n(2) - Render Jatoba Caemmun \n(9) - Câmera do PC \n\n'))
+    padrao = int(input('Informe o padrão: \n(0) - BRANCO 628x607 \n(1) - BRANCO 2pcs CM \n(2) - Render Jatoba Caemmun\n'))
     
     if padrao in padroes_aceitos:
         break
@@ -52,10 +52,9 @@ elif padrao == 2:
     videoPath = r'Videos Teste\Render 1.mkv'
     checkfile(videoPath)
     cap = cv2.VideoCapture(videoPath)
-
-elif padrao == 9: # Abre a câmera conectada ao PC
-    print('Utilizando câmera do PC')
-    cap = cv2.VideoCapture(0)
+else:
+    print('Não foi selecionado nenhum padrão! Fechando...')
+    exit()
 
 fps              = 30
 vel_esteira      = (18/60)*1000
@@ -97,31 +96,14 @@ while True:
 
 
     #Escolhe qual processo de mascara será utilizado com base em cada padrão
-    if padrao == 0:
-        resized = cv2.resize(frame, (960, 540))
-        recort = resized[1:540, 120:800]
-        rotatedr = imutils.rotate_bound(recort, 90)
-        (contours, thresh) = VT.tresh_bf_cae(Align.AlignFrame(frame))
-        start_scan = 20
-        end_scan   = 600
-        
-    elif padrao == 1:
-        resized = cv2.resize(frame, (960, 540))
-        recort = resized[1:540, 150:750]
-        rotatedr = imutils.rotate_bound(recort, 90)
+    if padrao == 0 or padrao == 1:
+        rotatedr = Align.AlignFrame(frame)
         (contours, thresh) = VT.tresh_bf_cae(rotatedr)
-        start_scan = 20
-        end_scan   = 550
-        
+    
     elif padrao == 2:
         rotatedr = Align.AlignFrame(frame)
         (contours, thresh) = VT.tresh_bt_cae(rotatedr)
   
-    elif padrao == 9:
-        rotatedr = frame
-        (contours, thresh) = VT.tresh_esteira_branco(rotatedr)
-        start_scan = 20
-        end_scan   = 450
     try:
         for cnts in contours: # Itera entre os contornos do Frame
 

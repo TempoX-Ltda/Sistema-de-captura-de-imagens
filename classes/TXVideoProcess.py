@@ -1,6 +1,8 @@
+from configparser import ConfigParser
+import imutils
 import cv2
 
-class VideoTresh:
+class VideoTresh():
     'Processa os Videos'
     def tresh_bt_cae(self, img): #Padrão BURITI CAEMMUN
         suave = cv2.blur(img, (5,5))
@@ -28,3 +30,30 @@ class VideoTresh:
         thresh = cv2.threshold(dilated, 190, 255, cv2.THRESH_BINARY)[1]
         (contours) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         return (contours, thresh)
+
+class VideoAlign(object):
+    'Possui métodos que são utilizados para alinhar o video recebido pela câmera ou arquivo de vídeo.'
+    def __init__(self, CameraConfigPath):
+        self.CameraConfig = ConfigParser()
+        self.CameraConfig.read(CameraConfigPath)
+        print('Arquivo de configurações da Câmera foi carregado: ' + str(CameraConfigPath))
+        self.start_scan   = 0
+        self.end_scan     = 0
+        self.scanlineYpos = 0
+    
+    def selectPatern(self, patern):
+        'Selecione como "Patern" o nome da seção do arquivo .ini que você passou ao instânciar VideoAlign.'
+        
+        self.resizedShape = tuple(eval(self.CameraConfig.get(patern, 'resizedShape')))
+        self.recortY      = eval(self.CameraConfig.get(patern, 'recortY'))
+        self.recortX      = eval(self.CameraConfig.get(patern, 'recortX'))
+        self.rotateAngle  = float(self.CameraConfig.get(patern, 'rotateAngle'))
+        self.start_scan   = int(self.CameraConfig.get(patern, 'scanlineStart'))
+        self.end_scan     = int(self.CameraConfig.get(patern, 'scanlineEnd'))
+        self.scanlineYpos = int(self.CameraConfig.get(patern, 'scanlineYPos'))
+
+    def AlignFrame(self, img):
+        resized = cv2.resize(img, self.resizedShape)
+        recort = resized[self.recortY[0]:self.recortY[1], 
+                         self.recortX[0]:self.recortX[1]]
+        return imutils.rotate_bound(recort, self.rotateAngle)

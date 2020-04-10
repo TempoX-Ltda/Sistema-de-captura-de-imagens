@@ -73,10 +73,20 @@ pcs_inframe      = []
 last_obj         = []
 obj_novo         = False
 
+# Instância a classe para fazer o alinhamento/enquadramento dos frames
+# carregando as informações do arquivo que é passado
 Align = VideoAlign(r'classes\PreProcessorCameraConfig.ini')
-Align.selectPatern('Render Jatoba Caemmun')
+# é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
+# arquivo que foi passado ao instânciar a classe
+Align.selectPatern('BRANCO 628x607')
 
-VT = VideoTresh()
+
+# Instância a classe para recortar os contornos das peças e realizar
+# o TRESH da imagem,carregando as informações do arquivo que é passado
+VT = VideoTresh(r'classes\PreProcessorColorConfig.ini')
+# é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
+# arquivo que foi passado ao instânciar a classe
+VT.selectPatern('Branco Fosco')
 
 while True:
     ret, frame = cap.read()
@@ -93,16 +103,15 @@ while True:
     #Inicia cronômetro
     tempo_inicio = timeit.default_timer()
 
-
-
     #Escolhe qual processo de mascara será utilizado com base em cada padrão
     if padrao == 0 or padrao == 1:
         rotatedr = Align.AlignFrame(frame)
-        (contours, thresh) = VT.tresh_bf_cae(rotatedr)
+        (contours, thresh) = VT.getPartsContours(rotatedr)
     
     elif padrao == 2:
-        rotatedr = Align.AlignFrame(frame)
-        (contours, thresh) = VT.tresh_bt_cae(rotatedr)
+        exit()
+        #rotatedr = Align.AlignFrame(frame)
+        #(contours, thresh) = VT.tresh_bt_cae(rotatedr)
   
     try:
         for cnts in contours: # Itera entre os contornos do Frame
@@ -156,7 +165,7 @@ while True:
                 # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores
                 Foco = Focar()
 
-                comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, hist = 'MatPlotLib')
+                comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel)
                 
                 # Escreve na imagem
                 escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)
@@ -185,7 +194,7 @@ while True:
     if imglog.shape[1] < 1300:
         cv2.imshow("Log", imglog)
     else:
-        cv2.imshow("Log", imglog[1:410, -1300:-1])
+        cv2.imshow("Log", imglog[:, -1300:-1])
     
     # Desenha linhas e escreve na janela
     linegray = cv2.line(thresh,    (Align.scanlineYpos, Align.start_scan), (Align.scanlineYpos, Align.end_scan), (150),       2)

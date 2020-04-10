@@ -1,9 +1,46 @@
 from configparser import ConfigParser
 import imutils
 import cv2
+from pathlib import Path
 
 class VideoTresh():
-    'Processa os Videos'
+    'Faz o recorte das peças do frame de acordo com o método especificado, retornando os contornos das peças e uma img binária com Tresh aplicado'
+
+    def __init__(self, ColorConfigPath):
+        self.ColorConfig = ConfigParser()
+        self.ColorConfig.read(Path(ColorConfigPath))
+        print('Arquivo de configurações de cor/padrão foi carregado: ' + str(ColorConfigPath))
+        self.paternSelected = False
+        
+    def selectPatern(self , patern):
+        'Selecione como "Patern" o nome da seção do arquivo .ini que você passou ao instânciar VideoTresh.'
+        self.blur = tuple(eval(self.ColorConfig.get(patern, 'blur')))
+        self.convertcolorMode = str(self.ColorConfig.get(patern, 'convertcolorMode'))
+        self.erodeIterations = int(self.ColorConfig.get(patern, 'erodeIterations'))
+        self.dilateIterations = int(self.ColorConfig.get(patern, 'dilateIterations'))
+        self.tresholdTresh = int(self.ColorConfig.get(patern, 'tresholdTresh'))
+        self.tresholdMaxVal = int(self.ColorConfig.get(patern, 'tresholdMaxVal'))
+        self.tresholdType = str(self.ColorConfig.get(patern, 'tresholdType'))
+        self.findContoursMode = str(self.ColorConfig.get(patern, 'findContoursMode'))
+        self.findContoursMetod = str(self.ColorConfig.get(patern, 'findContoursMetod'))
+        
+        self.paternSelected = True
+
+    def getPartsContours(self, img):
+        if self.paternSelected == True:
+            'Passe como "img" uma numpy array, esse função irá retornar o contorno dos objetos que estiverem na "img" e que estejam de acordo com os parâmetros especificados no arquivo que foi passado ao chamar "selectPatern", o retorno terá o formato (contours, tresh)'
+            blurred = cv2.blur(img, self.blur)
+            colorConverted = cv2.cvtColor(blurred, getattr(cv2, self.convertcolorMode))
+            eroded = cv2.erode(colorConverted, None, iterations=self.erodeIterations)
+            dilated = cv2.dilate(eroded, None, iterations=self.dilateIterations)
+            tresh = cv2.threshold(dilated, self.tresholdTresh, self.tresholdMaxVal, getattr(cv2, self.tresholdType))[1]
+            (contours, lx) = cv2.findContours(tresh.copy(), getattr(cv2, self.findContoursMode), getattr(cv2, self.findContoursMetod))
+            return (contours, tresh)
+        else:
+            print('Antes de executar "getPartsContours" você deve utilizar "selectPatern" para especificar qual a seção do arquivo de configurações você deseja utilizar!')
+            exit()
+
+'''
     def tresh_bt_cae(self, img): #Padrão BURITI CAEMMUN
         suave = cv2.blur(img, (5,5))
         hsv = cv2.cvtColor(suave,cv2.COLOR_BGR2HSV)
@@ -30,12 +67,12 @@ class VideoTresh():
         thresh = cv2.threshold(dilated, 190, 255, cv2.THRESH_BINARY)[1]
         (contours) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         return (contours, thresh)
-
+'''
 class VideoAlign(object):
     'Possui métodos que são utilizados para alinhar o video recebido pela câmera ou arquivo de vídeo.'
     def __init__(self, CameraConfigPath):
         self.CameraConfig = ConfigParser()
-        self.CameraConfig.read(CameraConfigPath)
+        self.CameraConfig.read(Path(CameraConfigPath))
         print('Arquivo de configurações da Câmera foi carregado: ' + str(CameraConfigPath))
         self.start_scan   = 0
         self.end_scan     = 0

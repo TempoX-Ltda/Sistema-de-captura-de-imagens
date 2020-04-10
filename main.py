@@ -36,22 +36,53 @@ while True:
     else:
         print('Erro, Digite corretamente!!')
 
+# Instância a classe para fazer o alinhamento/enquadramento dos frames
+# carregando as informações do arquivo que é passado
+Align = VideoAlign(r'classes\PreProcessorCameraConfig.ini')
+
+
+
+# Instância a classe para recortar os contornos das peças e realizar
+# o TRESH da imagem,carregando as informações do arquivo que é passado
+VT = VideoTresh(r'classes\PreProcessorColorConfig.ini')
+
+
 #Carrega arquivo do vídeo
 
 if padrao == 0:
     videoPath = r'Videos Teste/Porta Branca 628x607.mp4'
     checkfile(videoPath)
     cap = cv2.VideoCapture(videoPath)
-
+    
+    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
+    # arquivo que foi passado ao instânciar a classe
+    Align.selectPatern('BRANCO 628x607')
+    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
+    # arquivo que foi passado ao instânciar a classe
+    VT.selectPatern('Branco Fosco')
 elif padrao == 1:
     videoPath = r'Videos Teste/Peças brancas 2 por vez.mp4'
     checkfile(videoPath)
     cap = cv2.VideoCapture(videoPath)
 
+    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
+    # arquivo que foi passado ao instânciar a classe
+    Align.selectPatern('BRANCO 2pcs CM')
+    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
+    # arquivo que foi passado ao instânciar a classe
+    VT.selectPatern('Branco Fosco')
 elif padrao == 2:
     videoPath = r'Videos Teste\Render 1.mkv'
     checkfile(videoPath)
     cap = cv2.VideoCapture(videoPath)
+
+    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
+    # arquivo que foi passado ao instânciar a classe
+    Align.selectPatern('Render Jatoba Caemmun')
+    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
+    # arquivo que foi passado ao instânciar a classe
+    VT.selectPatern('Jatoba')
+
 else:
     print('Não foi selecionado nenhum padrão! Fechando...')
     exit()
@@ -73,20 +104,7 @@ pcs_inframe      = []
 last_obj         = []
 obj_novo         = False
 
-# Instância a classe para fazer o alinhamento/enquadramento dos frames
-# carregando as informações do arquivo que é passado
-Align = VideoAlign(r'classes\PreProcessorCameraConfig.ini')
-# é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
-# arquivo que foi passado ao instânciar a classe
-Align.selectPatern('BRANCO 628x607')
 
-
-# Instância a classe para recortar os contornos das peças e realizar
-# o TRESH da imagem,carregando as informações do arquivo que é passado
-VT = VideoTresh(r'classes\PreProcessorColorConfig.ini')
-# é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
-# arquivo que foi passado ao instânciar a classe
-VT.selectPatern('Branco Fosco')
 
 while True:
     ret, frame = cap.read()
@@ -109,9 +127,9 @@ while True:
         (contours, thresh) = VT.getPartsContours(rotatedr)
     
     elif padrao == 2:
-        exit()
-        #rotatedr = Align.AlignFrame(frame)
-        #(contours, thresh) = VT.tresh_bt_cae(rotatedr)
+
+        rotatedr = Align.AlignFrame(frame)
+        (contours, thresh) = VT.getPartsContours(rotatedr)
   
     try:
         for cnts in contours: # Itera entre os contornos do Frame
@@ -164,8 +182,8 @@ while True:
 
                 # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores
                 Foco = Focar()
-
-                comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel)
+                mask = cv2.bitwise_and(rotatedr, rotatedr, mask = thresh)
+                comp_pc, larg_pc = Foco.cutRectangle(cnts, mask, obj_atual, mmperPixel, hist="matplotlib")
                 
                 # Escreve na imagem
                 escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)

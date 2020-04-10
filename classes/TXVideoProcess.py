@@ -11,31 +11,64 @@ class VideoTresh():
         self.ColorConfig.read(Path(ColorConfigPath))
         print('Arquivo de configurações de cor/padrão foi carregado: ' + str(ColorConfigPath))
         self.paternSelected = False
-        
+
     def selectPatern(self , patern):
         'Selecione como "Patern" o nome da seção do arquivo .ini que você passou ao instânciar VideoTresh.'
-        self.blur = tuple(eval(self.ColorConfig.get(patern, 'blur')))
-        self.convertcolorMode = str(self.ColorConfig.get(patern, 'convertcolorMode'))
-        self.erodeIterations = int(self.ColorConfig.get(patern, 'erodeIterations'))
-        self.dilateIterations = int(self.ColorConfig.get(patern, 'dilateIterations'))
-        self.tresholdTresh = int(self.ColorConfig.get(patern, 'tresholdTresh'))
-        self.tresholdMaxVal = int(self.ColorConfig.get(patern, 'tresholdMaxVal'))
-        self.tresholdType = str(self.ColorConfig.get(patern, 'tresholdType'))
-        self.findContoursMode = str(self.ColorConfig.get(patern, 'findContoursMode'))
-        self.findContoursMetod = str(self.ColorConfig.get(patern, 'findContoursMetod'))
         
+        self.colorType = str(self.ColorConfig.get(patern, 'colorType'))
+
+        if self.colorType == 'solid':
+            self.blur              = tuple(eval(self.ColorConfig.get(patern, 'blur')))
+            self.convertcolorMode  = str(self.ColorConfig.get(patern, 'convertcolorMode'))
+            self.erodeIterations   = int(self.ColorConfig.get(patern, 'erodeIterations'))
+            self.dilateIterations  = int(self.ColorConfig.get(patern, 'dilateIterations'))
+            self.tresholdTresh     = int(self.ColorConfig.get(patern, 'tresholdTresh'))
+            self.tresholdMaxVal    = int(self.ColorConfig.get(patern, 'tresholdMaxVal'))
+            self.tresholdType      = str(self.ColorConfig.get(patern, 'tresholdType'))
+            self.findContoursMode  = str(self.ColorConfig.get(patern, 'findContoursMode'))
+            self.findContoursMetod = str(self.ColorConfig.get(patern, 'findContoursMetod'))
+        
+        elif self.colorType == 'veined':
+            self.blur              = tuple(eval(self.ColorConfig.get(patern, 'blur')))
+            self.convertcolorMode  = str(self.ColorConfig.get(patern, 'convertcolorMode'))
+            self.erodeIterations   = int(self.ColorConfig.get(patern, 'erodeIterations'))
+            self.dilateIterations  = int(self.ColorConfig.get(patern, 'dilateIterations'))
+            self.colorLowerRange   = tuple(eval(self.ColorConfig.get(patern, 'colorLowerRange')))
+            self.colorUpperRange   = tuple(eval(self.ColorConfig.get(patern, 'colorUpperRange')))
+            self.findContoursMode  = str(self.ColorConfig.get(patern, 'findContoursMode'))
+            self.findContoursMetod = str(self.ColorConfig.get(patern, 'findContoursMetod'))
+        else:
+            print('Não foi especificado corretamente o colorType!')
+            exit()
+
         self.paternSelected = True
 
     def getPartsContours(self, img):
+        'Passe como "img" uma numpy array, esse função irá retornar o contorno dos objetos que estiverem na "img" e que estejam de acordo com os parâmetros especificados no arquivo que foi passado ao chamar "selectPatern", o retorno terá o formato (contours, tresh)'
+        
         if self.paternSelected == True:
-            'Passe como "img" uma numpy array, esse função irá retornar o contorno dos objetos que estiverem na "img" e que estejam de acordo com os parâmetros especificados no arquivo que foi passado ao chamar "selectPatern", o retorno terá o formato (contours, tresh)'
-            blurred = cv2.blur(img, self.blur)
-            colorConverted = cv2.cvtColor(blurred, getattr(cv2, self.convertcolorMode))
-            eroded = cv2.erode(colorConverted, None, iterations=self.erodeIterations)
-            dilated = cv2.dilate(eroded, None, iterations=self.dilateIterations)
-            tresh = cv2.threshold(dilated, self.tresholdTresh, self.tresholdMaxVal, getattr(cv2, self.tresholdType))[1]
-            (contours, lx) = cv2.findContours(tresh.copy(), getattr(cv2, self.findContoursMode), getattr(cv2, self.findContoursMetod))
-            return (contours, tresh)
+
+            if self.colorType == 'solid':
+                blurred        = cv2.blur(img, self.blur)
+                colorConverted = cv2.cvtColor(blurred, getattr(cv2, self.convertcolorMode))
+                eroded         = cv2.erode(colorConverted, None, iterations=self.erodeIterations)
+                dilated        = cv2.dilate(eroded, None, iterations=self.dilateIterations)
+                tresh          = cv2.threshold(dilated, self.tresholdTresh, self.tresholdMaxVal, getattr(cv2, self.tresholdType))[1]
+                (contours, lx) = cv2.findContours(tresh.copy(), getattr(cv2, self.findContoursMode), getattr(cv2, self.findContoursMetod))
+                return (contours, tresh)
+            
+            elif self.colorType == 'veined':
+                
+                blurred        = cv2.blur(img, self.blur)
+                colorConverted = cv2.cvtColor(blurred, getattr(cv2, self.convertcolorMode))
+                eroded         = cv2.erode(colorConverted, None, iterations=self.erodeIterations)
+                dilated        = cv2.dilate(eroded, None, iterations=self.dilateIterations)
+                inrange        = cv2.inRange(dilated, self.colorLowerRange, self.colorUpperRange) #[ 10  30 132] [ 26 77 176]
+                (contours, lx) = cv2.findContours(inrange.copy(), getattr(cv2, self.findContoursMode), getattr(cv2, self.findContoursMetod))
+                return (contours, inrange)
+            else:
+                print('Não foi especificado corretamente o colorType!')
+                exit()
         else:
             print('Antes de executar "getPartsContours" você deve utilizar "selectPatern" para especificar qual a seção do arquivo de configurações você deseja utilizar!')
             exit()

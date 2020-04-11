@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 from classes.TX_ContornarPeca import ContornarPeca as CntPc
 
-class Focar:
+class Focar():
     def self():
         pass
     

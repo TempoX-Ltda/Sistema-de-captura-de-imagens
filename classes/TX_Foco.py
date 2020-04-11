@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 from classes.TX_ContornarPeca import ContornarPeca as CntPc
 
 class Focar():
-    def self():
-        pass
-    
+    def __init__(self):
+        self.StackedParts = []
+
     def histogramMatPlotLib(self, image):
         fig, ax = plt.subplots()
         
@@ -29,21 +29,24 @@ class Focar():
         
         return image
        
-    def cutRectangle(self, contour, image, id_obj, precision, hist):
+    def cutRectangle(self, contour, image, id_obj, precision, mask, hist=''):
+
+        maskedimage = cv2.bitwise_and(image, image, mask = mask)
         
+
         # Desenha e separa cada peça por janela e calcula o tamanho da peça
         rect = cv2.minAreaRect(contour)
         box  = cv2.boxPoints(rect)
         box  = np.int0(box)
-        (image_cut, widthA, heightA) = CntPc.four_point_transform(0, image, box)
+        (image_cut, widthA, heightA) = CntPc.four_point_transform(0, maskedimage, box)
         comp_pc = widthA  * precision
         larg_pc = heightA * precision
-        
+
+        self.StackedParts.append(image_cut)
+
         if hist == 'MatPlotLib':
             image_cut = Focar.histogramMatPlotLib(self, image_cut)
                     
         cv2.imshow('pc' + str(id_obj[1]), image_cut)
-        
-        cv2.drawContours(image,[box],0,(0,0,255),2)
-        
+
         return comp_pc, larg_pc

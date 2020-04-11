@@ -20,16 +20,20 @@ def escrever(imagem, texto, x, y):
 
 def checkfile(arquivo):
     if not os.path.exists(arquivo):
-        print('Caminho para arquivo não existente!')
+        print('Caminho para arquivo de vídeo não existente!')
         exit()
     else:
         print('Utilizando arquivo: ' + str(arquivo))
         pass
 
 #Valida entradas dos padrões
-padroes_aceitos = [0, 1, 2]
+padroes_aceitos = [0, 1, 2, 3]
 while True:
-    padrao = int(input('Informe o padrão: \n(0) - BRANCO 628x607 \n(1) - BRANCO 2pcs CM \n(2) - Render Jatoba Caemmun\n'))
+    padrao =  int(input('Informe o padrão: \n\
+    (0) - BRANCO 628x607 \n\
+    (1) - BRANCO 2pcs CM \n\
+    (2) - Render Jatoba\n\
+    (3) - Render Branco Fosco'))
     
     if padrao in padroes_aceitos:
         break
@@ -60,6 +64,7 @@ if padrao == 0:
     # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
     # arquivo que foi passado ao instânciar a classe
     VT.selectPatern('Branco Fosco')
+
 elif padrao == 1:
     videoPath = r'Videos Teste/Peças brancas 2 por vez.mp4'
     checkfile(videoPath)
@@ -71,17 +76,30 @@ elif padrao == 1:
     # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
     # arquivo que foi passado ao instânciar a classe
     VT.selectPatern('Branco Fosco')
+    
 elif padrao == 2:
-    videoPath = r'Videos Teste\Render 1.mkv'
+    videoPath = r'Videos Teste\Render Jatoba.mkv'
     checkfile(videoPath)
     cap = cv2.VideoCapture(videoPath)
 
     # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
     # arquivo que foi passado ao instânciar a classe
-    Align.selectPatern('Render Jatoba Caemmun')
+    Align.selectPatern('Render Blender')
     # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
     # arquivo que foi passado ao instânciar a classe
     VT.selectPatern('Jatoba')
+
+elif padrao == 3:
+    videoPath = r'Videos Teste\Render Branco Fosco.mkv'
+    checkfile(videoPath)
+    cap = cv2.VideoCapture(videoPath)
+
+    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
+    # arquivo que foi passado ao instânciar a classe
+    Align.selectPatern('Render Blender')
+    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
+    # arquivo que foi passado ao instânciar a classe
+    VT.selectPatern('Branco Fosco Render')
 
 else:
     print('Não foi selecionado nenhum padrão! Fechando...')
@@ -104,7 +122,7 @@ pcs_inframe      = []
 last_obj         = []
 obj_novo         = False
 
-
+Foco = Focar()
 
 while True:
     ret, frame = cap.read()
@@ -121,16 +139,9 @@ while True:
     #Inicia cronômetro
     tempo_inicio = timeit.default_timer()
 
-    #Escolhe qual processo de mascara será utilizado com base em cada padrão
-    if padrao == 0 or padrao == 1:
-        rotatedr = Align.AlignFrame(frame)
-        (contours, thresh) = VT.getPartsContours(rotatedr)
-    
-    elif padrao == 2:
+    rotatedr = Align.AlignFrame(frame)
+    (contours, thresh) = VT.getPartsContours(rotatedr)
 
-        rotatedr = Align.AlignFrame(frame)
-        (contours, thresh) = VT.getPartsContours(rotatedr)
-  
     try:
         for cnts in contours: # Itera entre os contornos do Frame
 
@@ -181,10 +192,12 @@ while True:
 
 
                 # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores
-                Foco = Focar()
-                mask = cv2.bitwise_and(rotatedr, rotatedr, mask = thresh)
-                comp_pc, larg_pc = Foco.cutRectangle(cnts, mask, obj_atual, mmperPixel, hist="matplotlib")
                 
+                
+                comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, thresh)
+                
+                cv2.imshow('peças', Foco.StackedParts)
+
                 # Escreve na imagem
                 escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)
                 escrever(rotatedr, 'Comp {:0.1f}'.format(comp_pc)            , cX, cY-30)
@@ -192,7 +205,9 @@ while True:
                 #escrever(rotatedr, '{:0.05f} M2'.format(obj_atual[4]/1000000*mmperPixel)  , cX, cY+45)
     except:
         pass
+
     
+
     # Destroi as janelas das peças que sairam do quadro
     for num_obj in pcs_inframe_old:
         if not num_obj in pcs_inframe:

@@ -1,12 +1,16 @@
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+import threading
 
 from classes.TX_ContornarPeca import ContornarPeca as CntPc
 
 class Focar():
+
     def __init__(self):
+
         self.StackedParts = []
+        self.threadLock = threading.Lock()
 
     def histogramMatPlotLib(self, image):
         fig, ax = plt.subplots()
@@ -42,8 +46,10 @@ class Focar():
         comp_pc = widthA  * precision
         larg_pc = heightA * precision
 
-        self.StackedParts.append(image_cut)
 
+        with self.threadLock:
+            self.StackedParts.append(image_cut)
+        
         if hist == 'MatPlotLib':
             image_cut = Focar.histogramMatPlotLib(self, image_cut)
                     

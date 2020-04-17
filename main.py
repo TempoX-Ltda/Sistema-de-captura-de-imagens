@@ -11,6 +11,7 @@ import numpy as np
 
 from classes.TXVideoProcess import VideoTresh, VideoAlign
 from classes.TX_Foco import Focar
+from classes.TX_QualityTest import QualityTest
 
 m2 = 0
 cap = ''
@@ -29,12 +30,16 @@ def checkfile(arquivo):
 #Valida entradas dos padrões
 padroes_aceitos = [0, 1, 2, 3]
 while True:
-    padrao =  int(input('Informe o padrão: \n\
-    (0) - BRANCO 628x607 \n\
-    (1) - BRANCO 2pcs CM \n\
-    (2) - Render Jatoba\n\
-    (3) - Render Branco Fosco'))
-    
+    padrao = 99999999999
+    try:
+        padrao =  int(input('Informe o padrão: \n\
+        (0) - BRANCO 628x607 \n\
+        (1) - BRANCO 2pcs CM \n\
+        (2) - Render Jatoba\n\
+        (3) - Render Branco Fosco\n'))
+    except:
+        pass
+
     if padrao in padroes_aceitos:
         break
     else:
@@ -124,6 +129,8 @@ obj_novo         = False
 
 Foco = Focar()
 
+QT = QualityTest('D:\GitHub\Repos\Gestao-Linha-UV\Videos Teste\JATOBA FINAL.jpg', Foco.StackedParts).start()
+
 while True:
     ret, frame = cap.read()
     if ret != True: #Valida se o frame existe
@@ -191,12 +198,8 @@ while True:
                         last_obj = objs_frame[i]
 
 
-                # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores
-                
-                
+                # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores                            
                 comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, thresh)
-                
-                cv2.imshow('peças', Foco.StackedParts)
 
                 # Escreve na imagem
                 escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)
@@ -205,9 +208,8 @@ while True:
                 #escrever(rotatedr, '{:0.05f} M2'.format(obj_atual[4]/1000000*mmperPixel)  , cX, cY+45)
     except:
         pass
-
     
-
+    print("Buffer: " + str(len(Foco.StackedParts)) + " imgs")
     # Destroi as janelas das peças que sairam do quadro
     for num_obj in pcs_inframe_old:
         if not num_obj in pcs_inframe:
@@ -256,8 +258,9 @@ while True:
     cv2.imshow("Linha UV rgb", rotatedr)
 
 
-
 print("{:0.2f} M² processados".format(m2))
 cap.release()
 
 cv2.destroyAllWindows()
+
+QT.stop()

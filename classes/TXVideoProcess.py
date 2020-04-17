@@ -107,21 +107,27 @@ class VideoAlign(object):
         self.CameraConfig = ConfigParser()
         self.CameraConfig.read(Path(CameraConfigPath))
         print('Arquivo de configurações da Câmera foi carregado: ' + str(CameraConfigPath))
-        self.start_scan   = 0
-        self.end_scan     = 0
-        self.scanlineYpos = 0
-    
+        self.start_scan         = 0
+        self.end_scan           = 0
+        self.scanlineYpos       = 0
+
+        self.expectedPartsSizes = []
     def selectPatern(self, patern):
         'Selecione como "Patern" o nome da seção do arquivo .ini que você passou ao instânciar VideoAlign.'
         
-        self.resizedShape = tuple(eval(self.CameraConfig.get(patern, 'resizedShape')))
-        self.recortY      = eval(self.CameraConfig.get(patern, 'recortY'))
-        self.recortX      = eval(self.CameraConfig.get(patern, 'recortX'))
-        self.rotateAngle  = float(self.CameraConfig.get(patern, 'rotateAngle'))
-        self.start_scan   = int(self.CameraConfig.get(patern, 'scanlineStart'))
-        self.end_scan     = int(self.CameraConfig.get(patern, 'scanlineEnd'))
-        self.scanlineYpos = int(self.CameraConfig.get(patern, 'scanlineYPos'))
+        self.resizedShape       = tuple(eval(self.CameraConfig.get(patern, 'resizedShape')))
+        self.recortY            = eval(self.CameraConfig.get(patern, 'recortY'))
+        self.recortX            = eval(self.CameraConfig.get(patern, 'recortX'))
+        self.rotateAngle        = float(self.CameraConfig.get(patern, 'rotateAngle'))
+        self.start_scan         = int(self.CameraConfig.get(patern, 'scanlineStart'))
+        self.end_scan           = int(self.CameraConfig.get(patern, 'scanlineEnd'))
+        self.scanlineYpos       = int(self.CameraConfig.get(patern, 'scanlineYPos'))
 
+        self.expectedPartsSizes = eval(self.CameraConfig.get(patern, 'expectedPartsSizes'))
+
+        for partnum, partsize in enumerate(self.expectedPartsSizes):
+            print('O tamanho esperado da peça ' + str(partnum + 1) + ' é de ' + str(partsize[0]) + 'x' + str(partsize[1]) + 'mm')
+    
     def AlignFrame(self, img):
         resized = cv2.resize(img, self.resizedShape)
         recort = resized[self.recortY[0]:self.recortY[1], 

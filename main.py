@@ -15,6 +15,17 @@ from classes.TX_Foco import Focar
 from classes.TX_QualityTest import QualityTest
 from classes.TX_GetVelocity import getVelocity
 
+GeneralConfig = ConfigParser()
+GeneralConfig.read(r'classes\GeneralConfig.ini')
+
+Show_Main_Window    = GeneralConfig.getboolean('Window', 'Show_Main_Window')
+Show_Tresh_Window   = GeneralConfig.getboolean('Window', 'Show_Tresh_Window')
+Show_Log_Window     = GeneralConfig.getboolean('Window', 'Show_Log_Window')
+Show_separate_Parts = GeneralConfig.getboolean('Window', 'Show_separate_Parts')
+
+Get_Velocity = GeneralConfig.getboolean('Modules', 'Get_Velocity')
+
+
 m2 = 0
 cap = ''
 
@@ -56,9 +67,7 @@ Align = VideoAlign(r'classes\PreProcessorCameraConfig.ini')
 VT = VideoTresh(r'classes\PreProcessorColorConfig.ini')
 
 
-
 #Carrega arquivo do vídeo
-
 if padrao == 0:
     videoPath = r'Videos Teste/Porta Branca 628x607.mp4'
     checkfile(videoPath)
@@ -112,12 +121,6 @@ else:
     exit()
 
 
-# Instância a classe que contém uma thread para acompanhar a velocidade da esteira
-Velocity = getVelocity(Align.CameraConfigPath, Align.paternName).start()
-
-encoderXYpos = Velocity.encoderXYpos
-print(encoderXYpos)
-
 fps              = 30
 vel_esteira      = (18/60)*1000
 razao_horizontal = vel_esteira / fps # "resolução" horizontal de captura
@@ -139,14 +142,11 @@ Foco = Focar()
 
 QT = QualityTest('D:\GitHub\Repos\Gestao-Linha-UV\Videos Teste\JATOBA FINAL.jpg', Foco.StackedParts).start()
 
-GeneralConfig = ConfigParser()
-GeneralConfig.read(r'classes\GeneralConfig.ini')
+if Get_Velocity == True:
+    # Instância a classe que contém uma thread para acompanhar a velocidade da esteira
+    Velocity = getVelocity(Align.CameraConfigPath, Align.paternName).start()
 
-Show_Main_Window    = GeneralConfig.getboolean('Window', 'Show_Main_Window')
-Show_Tresh_Window   = GeneralConfig.getboolean('Window', 'Show_Tresh_Window')
-print(Show_Tresh_Window)
-Show_Log_Window     = GeneralConfig.getboolean('Window', 'Show_Log_Window')
-Show_separate_Parts = GeneralConfig.getboolean('Window', 'Show_separate_Parts')
+    encoderXYpos = Velocity.encoderXYpos
 
 while True:
     ret, frame = cap.read()
@@ -166,15 +166,20 @@ while True:
 
     rotatedr = Align.AlignFrame(frame)
     (contours, thresh) = VT.getPartsContours(rotatedr)
-
-    EncoderColors    = []
     
-    for pos in encoderXYpos:
-        EncoderColors.append(rotatedr[pos[1], pos[0]])
+    if Get_Velocity == True:
+        EncoderColors    = []
+        
+        for pos in encoderXYpos:
+            EncoderColors.append(rotatedr[pos[1], pos[0]])
 
-        #print(rotatedr[pos[1], pos[0]])
-    Velocity.sendEncoderColors(EncoderColors)
+        Velocity.sendEncoderColors(EncoderColors)
 
+        if Velocity.showEncoderPos == True:
+            for encoder in encoderXYpos:
+                rotatedr = cv2.circle(rotatedr, tuple(encoder), 15, (255, 0, 0), thickness=3, lineType=8, shift=0) 
+
+        escrever(rotatedr, "{:01.2f} M/s".format(Velocity.get()), 10, 130)
     try:
         for cnts in contours: # Itera entre os contornos do Frame
 
@@ -264,11 +269,7 @@ while True:
     linergb  = cv2.line(rotatedr , (Align.scanlineYpos, Align.start_scan), (Align.scanlineYpos, Align.end_scan), (0, 0, 255), 2)
     escrever(rotatedr, "{:01.2f} Metros quadrados!".format(m2)           , 10, 60)
     escrever(rotatedr, "{:0.1f} segundos".format(timeit.default_timer()) , 10, 95)
-    escrever(rotatedr, "{:01.2f} M/s".format(Velocity.get())          , 10, 130)
-
-    if Velocity.showEncoderPos == True:
-        for encoder in encoderXYpos:
-            rotatedr = cv2.circle(rotatedr, tuple(encoder), 15, (255, 0, 0), thickness=3, lineType=8, shift=0) 
+    
 
     # Conta M2
     pixels = cv2.countNonZero(scan)
@@ -295,5 +296,7 @@ cap.release()
 
 cv2.destroyAllWindows()
 
-Velocity.stop()
+if Get_Velocity == True:
+    Velocity.stop()
+    
 QT.stop()

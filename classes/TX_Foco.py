@@ -50,6 +50,7 @@ class Focar():
         with self.threadLock:
             self.StackedParts.append(image_cut)
         
+
         if hist == 'MatPlotLib':
             image_cut = Focar.histogramMatPlotLib(self, image_cut)
                     

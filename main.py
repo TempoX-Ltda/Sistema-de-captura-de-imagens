@@ -12,6 +12,7 @@ import numpy as np
 from classes.TXVideoProcess import VideoTresh, VideoAlign
 from classes.TX_Foco import Focar
 from classes.TX_QualityTest import QualityTest
+from classes.TX_GetVelocity import getVelocity
 
 m2 = 0
 cap = ''
@@ -49,11 +50,10 @@ while True:
 # carregando as informações do arquivo que é passado
 Align = VideoAlign(r'classes\PreProcessorCameraConfig.ini')
 
-
-
 # Instância a classe para recortar os contornos das peças e realizar
-# o TRESH da imagem,carregando as informações do arquivo que é passado
+# o TRESH da imagem, carregando as informações do arquivo que é passado
 VT = VideoTresh(r'classes\PreProcessorColorConfig.ini')
+
 
 
 #Carrega arquivo do vídeo
@@ -110,6 +110,13 @@ else:
     print('Não foi selecionado nenhum padrão! Fechando...')
     exit()
 
+
+# Instância a classe que contém uma thread para acompanhar a velocidade da esteira
+Velocity = getVelocity(Align.CameraConfigPath, Align.paternName).start()
+
+encoderXYpos = Velocity.encoderXYpos
+print(encoderXYpos)
+
 fps              = 30
 vel_esteira      = (18/60)*1000
 razao_horizontal = vel_esteira / fps # "resolução" horizontal de captura
@@ -127,12 +134,16 @@ pcs_inframe      = []
 last_obj         = []
 obj_novo         = False
 
+
+
 Foco = Focar()
 
 QT = QualityTest('D:\GitHub\Repos\Gestao-Linha-UV\Videos Teste\JATOBA FINAL.jpg', Foco.StackedParts).start()
 
+
 while True:
     ret, frame = cap.read()
+
     if ret != True: #Valida se o frame existe
         break
 
@@ -148,6 +159,14 @@ while True:
 
     rotatedr = Align.AlignFrame(frame)
     (contours, thresh) = VT.getPartsContours(rotatedr)
+
+    EncoderColors    = []
+    
+    for pos in encoderXYpos:
+        EncoderColors.append(rotatedr[pos[1], pos[0]])
+
+        #print(rotatedr[pos[1], pos[0]])
+    Velocity.sendEncoderColors(EncoderColors)
 
     try:
         for cnts in contours: # Itera entre os contornos do Frame
@@ -209,7 +228,8 @@ while True:
     except:
         pass
     
-    print("Buffer: " + str(len(Foco.StackedParts)) + " imgs")
+    #print("Buffer: " + str(len(Foco.StackedParts)) + " imgs")
+
     # Destroi as janelas das peças que sairam do quadro
     for num_obj in pcs_inframe_old:
         if not num_obj in pcs_inframe:
@@ -236,6 +256,11 @@ while True:
     linergb  = cv2.line(rotatedr , (Align.scanlineYpos, Align.start_scan), (Align.scanlineYpos, Align.end_scan), (0, 0, 255), 2)
     escrever(rotatedr, "{:01.2f} Metros quadrados!".format(m2)           , 10, 60)
     escrever(rotatedr, "{:0.1f} segundos".format(timeit.default_timer()) , 10, 95)
+    escrever(rotatedr, "{:01.2f} M/s".format(Velocity.get())          , 10, 130)
+
+    if Velocity.showEncoderPos == True:
+        for encoder in encoderXYpos:
+            rotatedr = cv2.circle(rotatedr, tuple(encoder), 15, (255, 0, 0), thickness=3, lineType=8, shift=0) 
 
     # Conta M2
     pixels = cv2.countNonZero(scan)
@@ -257,10 +282,12 @@ while True:
     cv2.imshow("Linha UV BW", thresh)
     cv2.imshow("Linha UV rgb", rotatedr)
 
+    #sleep(.2)
 
 print("{:0.2f} M² processados".format(m2))
 cap.release()
 
 cv2.destroyAllWindows()
 
+Velocity.stop()
 QT.stop()

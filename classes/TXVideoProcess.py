@@ -14,7 +14,6 @@ class VideoTresh():
 
     def selectPatern(self , patern):
         'Selecione como "Patern" o nome da seção do arquivo .ini que você passou ao instânciar VideoTresh.'
-        
         self.colorType = str(self.ColorConfig.get(patern, 'colorType'))
 
         if self.colorType == 'solid':
@@ -105,25 +104,30 @@ class VideoAlign(object):
     'Possui métodos que são utilizados para alinhar o video recebido pela câmera ou arquivo de vídeo.'
     def __init__(self, CameraConfigPath):
         self.CameraConfig = ConfigParser()
-        self.CameraConfig.read(Path(CameraConfigPath))
-        print('Arquivo de configurações da Câmera foi carregado: ' + str(CameraConfigPath))
+
+        self.CameraConfigPath = CameraConfigPath
+        self.CameraConfig.read(Path(self.CameraConfigPath))
+        print('Arquivo de configurações da Câmera foi carregado: ' + str(self.CameraConfigPath))
         self.start_scan         = 0
         self.end_scan           = 0
         self.scanlineYpos       = 0
 
         self.expectedPartsSizes = []
+        self.paternName = ''
+
     def selectPatern(self, patern):
         'Selecione como "Patern" o nome da seção do arquivo .ini que você passou ao instânciar VideoAlign.'
-        
-        self.resizedShape       = tuple(eval(self.CameraConfig.get(patern, 'resizedShape')))
-        self.recortY            = eval(self.CameraConfig.get(patern, 'recortY'))
-        self.recortX            = eval(self.CameraConfig.get(patern, 'recortX'))
-        self.rotateAngle        = float(self.CameraConfig.get(patern, 'rotateAngle'))
-        self.start_scan         = int(self.CameraConfig.get(patern, 'scanlineStart'))
-        self.end_scan           = int(self.CameraConfig.get(patern, 'scanlineEnd'))
-        self.scanlineYpos       = int(self.CameraConfig.get(patern, 'scanlineYPos'))
+        self.paternName = patern
 
-        self.expectedPartsSizes = eval(self.CameraConfig.get(patern, 'expectedPartsSizes'))
+        self.resizedShape       = tuple(eval(self.CameraConfig.get(self.paternName, 'resizedShape')))
+        self.recortY            = eval(self.CameraConfig.get(self.paternName, 'recortY'))
+        self.recortX            = eval(self.CameraConfig.get(self.paternName, 'recortX'))
+        self.rotateAngle        = float(self.CameraConfig.get(self.paternName, 'rotateAngle'))
+        self.start_scan         = int(self.CameraConfig.get(self.paternName, 'scanlineStart'))
+        self.end_scan           = int(self.CameraConfig.get(self.paternName, 'scanlineEnd'))
+        self.scanlineYpos       = int(self.CameraConfig.get(self.paternName, 'scanlineYPos'))
+
+        self.expectedPartsSizes = eval(self.CameraConfig.get(self.paternName, 'expectedPartsSizes'))
 
         for partnum, partsize in enumerate(self.expectedPartsSizes):
             print('O tamanho esperado da peça ' + str(partnum + 1) + ' é de ' + str(partsize[0]) + 'x' + str(partsize[1]) + 'mm')

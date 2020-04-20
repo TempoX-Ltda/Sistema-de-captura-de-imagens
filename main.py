@@ -8,6 +8,7 @@ import os
 import cv2
 import imutils
 import numpy as np
+from configparser import ConfigParser
 
 from classes.TXVideoProcess import VideoTresh, VideoAlign
 from classes.TX_Foco import Focar
@@ -134,12 +135,18 @@ pcs_inframe      = []
 last_obj         = []
 obj_novo         = False
 
-
-
 Foco = Focar()
 
 QT = QualityTest('D:\GitHub\Repos\Gestao-Linha-UV\Videos Teste\JATOBA FINAL.jpg', Foco.StackedParts).start()
 
+GeneralConfig = ConfigParser()
+GeneralConfig.read(r'classes\GeneralConfig.ini')
+
+Show_Main_Window    = GeneralConfig.getboolean('Window', 'Show_Main_Window')
+Show_Tresh_Window   = GeneralConfig.getboolean('Window', 'Show_Tresh_Window')
+print(Show_Tresh_Window)
+Show_Log_Window     = GeneralConfig.getboolean('Window', 'Show_Log_Window')
+Show_separate_Parts = GeneralConfig.getboolean('Window', 'Show_separate_Parts')
 
 while True:
     ret, frame = cap.read()
@@ -218,7 +225,7 @@ while True:
 
 
                 # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores                            
-                comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, thresh)
+                comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, thresh, Show_separate_Parts)
 
                 # Escreve na imagem
                 escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)
@@ -246,10 +253,11 @@ while True:
         for i in range(int(razao_horizontal/mmperPixel)): # isso pode dar problema pois está arredondando os valores
             imglog = np.concatenate((imglog, scan), axis=1)
     
-    if imglog.shape[1] < 1300:
-        cv2.imshow("Log", imglog)
-    else:
-        cv2.imshow("Log", imglog[:, -1300:-1])
+    if Show_Log_Window == True:
+        if imglog.shape[1] < 1300:
+            cv2.imshow("Log", imglog)
+        else:
+            cv2.imshow("Log", imglog[:, -1300:-1])
     
     # Desenha linhas e escreve na janela
     linegray = cv2.line(thresh,    (Align.scanlineYpos, Align.start_scan), (Align.scanlineYpos, Align.end_scan), (150),       2)
@@ -267,8 +275,10 @@ while True:
     m2 += ((pixels * mmperPixel)*razao_horizontal)/1000000
 
     # Mostra os videos
-    cv2.imshow("Linha UV BW", thresh)
-    cv2.imshow("Linha UV rgb", rotatedr)
+    if Show_Tresh_Window == True:
+        cv2.imshow("Linha UV BW", thresh)
+    if Show_Main_Window == True:
+        cv2.imshow("Linha UV rgb", rotatedr)
 
     # Delay a partir de determinado frame
     #if counterframe > 60:    
@@ -279,10 +289,6 @@ while True:
     key = cv2.waitKey(1) 
     if key == 27:
         break
-    cv2.imshow("Linha UV BW", thresh)
-    cv2.imshow("Linha UV rgb", rotatedr)
-
-    #sleep(.2)
 
 print("{:0.2f} M² processados".format(m2))
 cap.release()

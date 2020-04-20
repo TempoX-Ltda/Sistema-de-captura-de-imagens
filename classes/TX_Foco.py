@@ -33,7 +33,7 @@ class Focar():
         
         return image
        
-    def cutRectangle(self, contour, image, id_obj, precision, mask, hist=''):
+    def cutRectangle(self, contour, image, id_obj, precision, mask, showWindow , hist=''):
 
         maskedimage = cv2.bitwise_and(image, image, mask = mask)
         
@@ -53,7 +53,8 @@ class Focar():
 
         if hist == 'MatPlotLib':
             image_cut = Focar.histogramMatPlotLib(self, image_cut)
-                    
-        cv2.imshow('pc' + str(id_obj[1]), image_cut)
+
+        if showWindow == True:        
+            cv2.imshow('pc' + str(id_obj[1]), image_cut)
 
         return comp_pc, larg_pc

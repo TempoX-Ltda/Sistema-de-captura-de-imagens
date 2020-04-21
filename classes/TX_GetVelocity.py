@@ -10,12 +10,16 @@ from colormath.color_diff import delta_e_cie2000
 
 class getVelocity():
 
-    def __init__(self, CameraConfigPath, paternName):
+    def __init__(self, CameraConfigPath, paternName, mode, framerate):
         print(CameraConfigPath)
         print(paternName)
         self.CameraConfigPath = CameraConfigPath
         self.paternName       = paternName
+        self.mode             = mode
+        self.framerate        = framerate
 
+
+        print('Módulo de velocidade carregado no modo: ' + str(self.mode))
         self.EncoderConfig = ConfigParser()
         self.EncoderConfig.read(Path(self.CameraConfigPath))
         print('Arquivo de configurações da Câmera para configurações do Encoder foi carregado: ' + str(self.CameraConfigPath))
@@ -28,12 +32,12 @@ class getVelocity():
             print('A posição do encoder ' + str(encoder) + " é: " + str(self.encoderXYpos[encoder]))
         
         self.EncoderColors = []
-        self.velocity = 0.0
+        self.velocity      = 0.0
+        self.QtdFrames     = 0
 
         self.threadLock = Lock()
         self.stopped    = False
         self.newColor   = False
-
 
     def start(self):
         Thread(target=self.measure, args=()).start()
@@ -68,7 +72,6 @@ class getVelocity():
                         for i in range(len(_EncoderColors)):
                             difference = delta_e_cie2000(_EncoderColors[i], lastColor[i])
                         
-                            
                             if difference > 30:
                                 #print("Diferença de cor no encoder " + str(i) + " é de: " + str(difference))
                                 differences[i] = True
@@ -76,12 +79,17 @@ class getVelocity():
 
                         if not False in differences:
                             #print("Troca")
-                            timeInterval  = timeit.default_timer() - lastAtt
-                            timeInterval  = timeInterval / 60
-                            self.velocity = self.encodeStripSize / timeInterval
+                            
+                            if self.mode == 'by_real_time':
+                                timeInterval  = timeit.default_timer() - lastAtt
+                                timeInterval  = timeInterval / 60
+                                self.velocity = self.encodeStripSize / timeInterval
 
-                            lastAtt = timeit.default_timer()
-
+                                lastAtt = timeit.default_timer()
+                            elif self.mode == 'by_frame':
+                                
+                                self.velocity  = self.encodeStripSize / ((self.QtdFrames / self.framerate) / 60)
+                                self.QtdFrames = 0
                     except:
                         pass
                 with self.threadLock:
@@ -99,4 +107,5 @@ class getVelocity():
     def sendEncoderColors(self, EncoderColors):
         self.EncoderColors = EncoderColors
         with self.threadLock:
-            self.newColor = True
+            self.newColor   = True
+            self.QtdFrames += 1

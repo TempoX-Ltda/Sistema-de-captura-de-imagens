@@ -144,7 +144,10 @@ QT = QualityTest('D:\GitHub\Repos\Gestao-Linha-UV\Videos Teste\JATOBA FINAL.jpg'
 
 if Get_Velocity == True:
     # Instância a classe que contém uma thread para acompanhar a velocidade da esteira
-    Velocity = getVelocity(Align.CameraConfigPath, Align.paternName).start()
+    Velocity = getVelocity(Align.CameraConfigPath,
+                           Align.paternName,
+                           GeneralConfig.get('Modules', 'Get_Velocity_Mode'),
+                           fps).start()
 
     encoderXYpos = Velocity.encoderXYpos
 

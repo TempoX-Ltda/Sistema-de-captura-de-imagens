@@ -2,6 +2,7 @@
 #Tempox Automacoes Indutriais LTDA.
 #GTRLP - Data de Testes
 
+from pathlib import Path
 import timeit
 from time import sleep
 import os
@@ -15,20 +16,6 @@ from classes.TX_Foco import Focar
 from classes.TX_QualityTest import QualityTest
 from classes.TX_GetVelocity import getVelocity
 
-GeneralConfig = ConfigParser()
-GeneralConfig.read(r'classes\GeneralConfig.ini')
-
-Show_Main_Window    = GeneralConfig.getboolean('Window', 'Show_Main_Window')
-Show_Tresh_Window   = GeneralConfig.getboolean('Window', 'Show_Tresh_Window')
-Show_Log_Window     = GeneralConfig.getboolean('Window', 'Show_Log_Window')
-Show_separate_Parts = GeneralConfig.getboolean('Window', 'Show_separate_Parts')
-
-Get_Velocity = GeneralConfig.getboolean('Modules', 'Get_Velocity')
-
-
-m2 = 0
-cap = ''
-
 def escrever(imagem, texto, x, y):
     return(cv2.putText(imagem, texto, (x, y), cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2,cv2.LINE_AA))
 
@@ -40,86 +27,65 @@ def checkfile(arquivo):
         print('Utilizando arquivo: ' + str(arquivo))
         pass
 
-#Valida entradas dos padrões
-padroes_aceitos = [0, 1, 2, 3]
-while True:
-    padrao = 99999999999
-    try:
-        padrao =  int(input('Informe o padrão: \n\
-        (0) - BRANCO 628x607 \n\
-        (1) - BRANCO 2pcs CM \n\
-        (2) - Render Jatoba\n\
-        (3) - Render Branco Fosco\n'))
-    except:
-        pass
-
-    if padrao in padroes_aceitos:
-        break
-    else:
-        print('Erro, Digite corretamente!!')
-
 # Instância a classe para fazer o alinhamento/enquadramento dos frames
 # carregando as informações do arquivo que é passado
-Align = VideoAlign(r'classes\PreProcessorCameraConfig.ini')
+Align = VideoAlign(r'classes\CameraConfig.ini')
 
 # Instância a classe para recortar os contornos das peças e realizar
 # o TRESH da imagem, carregando as informações do arquivo que é passado
-VT = VideoTresh(r'classes\PreProcessorColorConfig.ini')
+VT = VideoTresh(r'classes\ColorConfig.ini')
+
+GeneralConfig = ConfigParser()
+GeneralConfig.read(r'classes\GeneralConfig.ini')
+
+Show_Main_Window    = GeneralConfig.getboolean('Window', 'Show_Main_Window')
+Show_Tresh_Window   = GeneralConfig.getboolean('Window', 'Show_Tresh_Window')
+Show_Log_Window     = GeneralConfig.getboolean('Window', 'Show_Log_Window')
+Show_separate_Parts = GeneralConfig.getboolean('Window', 'Show_separate_Parts')
+
+Get_Velocity = GeneralConfig.getboolean('Modules', 'Get_Velocity')
 
 
-#Carrega arquivo do vídeo
-if padrao == 0:
-    videoPath = r'Videos Teste/Porta Branca 628x607.mp4'
-    checkfile(videoPath)
-    cap = cv2.VideoCapture(videoPath)
+inputConfig = ConfigParser()
+inputConfig.read(r"classes\InputConfig.ini")
+
+method = 0
+# Mostra todas as possibilidades de métodos de video que o arquivo "InputConfig.ini" possui
+for num, name in enumerate(inputConfig.sections()):
+    num = num + 1
+    print(str(num) + " - " + name)
+
+# Coleta e valida a entrada do usuário
+while True:
+    try:
+        method = int(input("Informe a forma de execução da análise:"))
+    except:
+        pass
     
-    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    Align.selectPatern('BRANCO 628x607')
-    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    VT.selectPatern('Branco Fosco')
+    if method < len(inputConfig.sections()) + 1 and method != 0:
+        method = str(inputConfig.sections()[method - 1])
+        break
 
-elif padrao == 1:
-    videoPath = r'Videos Teste/Peças brancas 2 por vez.mp4'
+videoPath = inputConfig.get(method, "path")
+
+cap = ''
+
+if inputConfig.get(method, "type") == "file":
     checkfile(videoPath)
     cap = cv2.VideoCapture(videoPath)
-
-    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    Align.selectPatern('BRANCO 2pcs CM')
-    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    VT.selectPatern('Branco Fosco')
-    
-elif padrao == 2:
-    videoPath = r'Videos Teste\Render Jatoba.mkv'
-    checkfile(videoPath)
-    cap = cv2.VideoCapture(videoPath)
-
-    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    Align.selectPatern('Render Blender')
-    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    VT.selectPatern('Jatoba')
-
-elif padrao == 3:
-    videoPath = r'Videos Teste\Render Branco Fosco.mkv'
-    checkfile(videoPath)
-    cap = cv2.VideoCapture(videoPath)
-
-    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    Align.selectPatern('Render Blender')
-    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    VT.selectPatern('Branco Fosco Render')
-
+elif inputConfig.get(method, "type") == "camera":
+    cap = cv2.VideoCapture(int(videoPath))
 else:
-    print('Não foi selecionado nenhum padrão! Fechando...')
+    print('O tipo de execução não foi definido corretamente no arquivo "inputConfig.ini". Encerrando...')
     exit()
 
+# É passado o nome das configurações de enquadramento/alinhamento que estão no arquivo
+# "CameraConfig.ini" com base no método de vídeo do arquivo "InputConfig.ini"
+Align.selectPatern(inputConfig.get(method, "cameraAlign"))
+
+# É passado o nome das configurações de cor/padrão utilizado que estão no arquivo
+# "ColorConfig.ini" com base no método de vídeo do arquivo "InputConfig.ini"
+VT.selectPatern(inputConfig.get(method, "colorPatern"))
 
 fps              = 30
 vel_esteira      = (18/60)*1000
@@ -127,7 +93,7 @@ razao_horizontal = vel_esteira / fps # "resolução" horizontal de captura
 referencia       = 100000
 mmperPixel       = 1.94
 idpeca           = 1
-
+m2               = 0
 counterframe     = 0
 counterobj       = 0
 objs_frame       = []

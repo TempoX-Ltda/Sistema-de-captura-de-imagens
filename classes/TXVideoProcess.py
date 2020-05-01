@@ -7,9 +7,14 @@ class VideoTresh():
     'Faz o recorte das peças do frame de acordo com o método especificado, retornando os contornos das peças e uma img binária com Tresh aplicado'
 
     def __init__(self, ColorConfigPath):
+        self.ColorConfigPath = Path(ColorConfigPath)
+        if not self.ColorConfigPath.exists():
+            print('O arquivo não pode ser carregado: ' + str(self.ColorConfigPath))
+            exit()
         self.ColorConfig = ConfigParser()
-        self.ColorConfig.read(Path(ColorConfigPath))
+        self.ColorConfig.read(self.ColorConfigPath)
         print('Arquivo de configurações de cor/padrão foi carregado: ' + str(ColorConfigPath))
+        
         self.paternSelected = False
 
     def selectPatern(self , patern):
@@ -104,9 +109,12 @@ class VideoAlign(object):
     'Possui métodos que são utilizados para alinhar o video recebido pela câmera ou arquivo de vídeo.'
     def __init__(self, CameraConfigPath):
         self.CameraConfig = ConfigParser()
-
-        self.CameraConfigPath = CameraConfigPath
-        self.CameraConfig.read(Path(self.CameraConfigPath))
+        self.CameraConfigPath = Path(CameraConfigPath)
+        if not self.CameraConfigPath.exists():
+            print('O arquivo não pode ser carregado: ' + str(self.CameraConfigPath))
+            exit()
+            
+        self.CameraConfig.read(self.CameraConfigPath)
         print('Arquivo de configurações da Câmera foi carregado: ' + str(self.CameraConfigPath))
         self.start_scan         = 0
         self.end_scan           = 0

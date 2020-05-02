@@ -2,90 +2,90 @@
 #Tempox Automacoes Indutriais LTDA.
 #GTRLP - Data de Testes
 
+from pathlib import Path
 import timeit
 from time import sleep
 import os
 import cv2
 import imutils
 import numpy as np
+from configparser import ConfigParser
 
 from classes.TXVideoProcess import VideoTresh, VideoAlign
 from classes.TX_Foco import Focar
-
-m2 = 0
-cap = ''
+from classes.TX_QualityTest import QualityTest
+from classes.TX_GetVelocity import getVelocity
 
 def escrever(imagem, texto, x, y):
     return(cv2.putText(imagem, texto, (x, y), cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2,cv2.LINE_AA))
 
 def checkfile(arquivo):
     if not os.path.exists(arquivo):
-        print('Caminho para arquivo não existente!')
+        print('Caminho para arquivo de vídeo não existente!')
         exit()
     else:
         print('Utilizando arquivo: ' + str(arquivo))
         pass
 
-#Valida entradas dos padrões
-padroes_aceitos = [0, 1, 2]
-while True:
-    padrao = int(input('Informe o padrão: \n(0) - BRANCO 628x607 \n(1) - BRANCO 2pcs CM \n(2) - Render Jatoba Caemmun\n'))
-    
-    if padrao in padroes_aceitos:
-        break
-    else:
-        print('Erro, Digite corretamente!!')
-
 # Instância a classe para fazer o alinhamento/enquadramento dos frames
 # carregando as informações do arquivo que é passado
-Align = VideoAlign(r'classes\PreProcessorCameraConfig.ini')
-
-
+Align = VideoAlign(r'classes\CameraConfig.ini')
 
 # Instância a classe para recortar os contornos das peças e realizar
-# o TRESH da imagem,carregando as informações do arquivo que é passado
-VT = VideoTresh(r'classes\PreProcessorColorConfig.ini')
+# o TRESH da imagem, carregando as informações do arquivo que é passado
+VT = VideoTresh(r'classes\ColorConfig.ini')
 
+GeneralConfig = ConfigParser()
+GeneralConfig.read(r'classes\GeneralConfig.ini')
 
-#Carrega arquivo do vídeo
+Show_Main_Window    = GeneralConfig.getboolean('Window', 'Show_Main_Window')
+Show_Tresh_Window   = GeneralConfig.getboolean('Window', 'Show_Tresh_Window')
+Show_Log_Window     = GeneralConfig.getboolean('Window', 'Show_Log_Window')
+Show_separate_Parts = GeneralConfig.getboolean('Window', 'Show_separate_Parts')
 
-if padrao == 0:
-    videoPath = r'Videos Teste/Porta Branca 628x607.mp4'
-    checkfile(videoPath)
-    cap = cv2.VideoCapture(videoPath)
+Get_Velocity    = GeneralConfig.getboolean('Modules', 'Get_Velocity')
+Use_QualityTest = GeneralConfig.getboolean('Modules', 'QualityTest')
+
+inputConfig = ConfigParser()
+inputConfig.read(r"classes\InputConfig.ini")
+
+method = 0
+# Mostra todas as possibilidades de métodos de video que o arquivo "InputConfig.ini" possui
+for num, name in enumerate(inputConfig.sections()):
+    num = num + 1
+    print(str(num) + " - " + name)
+
+# Coleta e valida a entrada do usuário
+while True:
+    try:
+        method = int(input("Informe a forma de execução da análise:"))
+    except:
+        pass
     
-    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    Align.selectPatern('BRANCO 628x607')
-    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    VT.selectPatern('Branco Fosco')
-elif padrao == 1:
-    videoPath = r'Videos Teste/Peças brancas 2 por vez.mp4'
+    if method < len(inputConfig.sections()) + 1 and method != 0:
+        method = str(inputConfig.sections()[method - 1])
+        break
+
+videoPath = inputConfig.get(method, "path")
+
+cap = ''
+
+if inputConfig.get(method, "type") == "file":
     checkfile(videoPath)
     cap = cv2.VideoCapture(videoPath)
-
-    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    Align.selectPatern('BRANCO 2pcs CM')
-    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    VT.selectPatern('Branco Fosco')
-elif padrao == 2:
-    videoPath = r'Videos Teste\Render 1.mkv'
-    checkfile(videoPath)
-    cap = cv2.VideoCapture(videoPath)
-
-    # é passado o nome do filtro utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    Align.selectPatern('Render Jatoba Caemmun')
-    # é passado o nome da cor/padrão utilizado, deve ter o mesmo nome da seção do
-    # arquivo que foi passado ao instânciar a classe
-    VT.selectPatern('Jatoba')
-
+elif inputConfig.get(method, "type") == "camera":
+    cap = cv2.VideoCapture(int(videoPath))
 else:
-    print('Não foi selecionado nenhum padrão! Fechando...')
+    print('O tipo de execução não foi definido corretamente no arquivo "inputConfig.ini". Encerrando...')
     exit()
+
+# É passado o nome das configurações de enquadramento/alinhamento que estão no arquivo
+# "CameraConfig.ini" com base no método de vídeo do arquivo "InputConfig.ini"
+Align.selectPatern(inputConfig.get(method, "cameraAlign"))
+
+# É passado o nome das configurações de cor/padrão utilizado que estão no arquivo
+# "ColorConfig.ini" com base no método de vídeo do arquivo "InputConfig.ini"
+VT.selectPatern(inputConfig.get(method, "colorPatern"))
 
 fps              = 30
 vel_esteira      = (18/60)*1000
@@ -93,7 +93,7 @@ razao_horizontal = vel_esteira / fps # "resolução" horizontal de captura
 referencia       = 100000
 mmperPixel       = 1.94
 idpeca           = 1
-
+m2               = 0
 counterframe     = 0
 counterobj       = 0
 objs_frame       = []
@@ -104,10 +104,23 @@ pcs_inframe      = []
 last_obj         = []
 obj_novo         = False
 
+Foco = Focar()
 
+if Use_QualityTest == True:
+    QT = QualityTest(VT.perfectPaternPath, Foco.StackedParts).start()
+
+if Get_Velocity == True:
+    # Instância a classe que contém uma thread para acompanhar a velocidade da esteira
+    Velocity = getVelocity(Align.CameraConfigPath,
+                           Align.paternName,
+                           GeneralConfig.get('Modules', 'Get_Velocity_Mode'),
+                           fps).start()
+
+    encoderXYpos = Velocity.encoderXYpos
 
 while True:
     ret, frame = cap.read()
+
     if ret != True: #Valida se o frame existe
         break
 
@@ -121,16 +134,22 @@ while True:
     #Inicia cronômetro
     tempo_inicio = timeit.default_timer()
 
-    #Escolhe qual processo de mascara será utilizado com base em cada padrão
-    if padrao == 0 or padrao == 1:
-        rotatedr = Align.AlignFrame(frame)
-        (contours, thresh) = VT.getPartsContours(rotatedr)
+    rotatedr = Align.AlignFrame(frame)
+    (contours, thresh) = VT.getPartsContours(rotatedr)
     
-    elif padrao == 2:
+    if Get_Velocity == True:
+        EncoderColors    = []
+        
+        for pos in encoderXYpos:
+            EncoderColors.append(rotatedr[pos[1], pos[0]])
 
-        rotatedr = Align.AlignFrame(frame)
-        (contours, thresh) = VT.getPartsContours(rotatedr)
-  
+        Velocity.sendEncoderColors(EncoderColors)
+
+        if Velocity.showEncoderPos == True:
+            for encoder in encoderXYpos:
+                rotatedr = cv2.circle(rotatedr, tuple(encoder), 15, (255, 0, 0), thickness=3, lineType=8, shift=0) 
+
+        escrever(rotatedr, "{:01.2f} M/s".format(Velocity.get()), 10, 130)
     try:
         for cnts in contours: # Itera entre os contornos do Frame
 
@@ -180,11 +199,9 @@ while True:
                         last_obj = objs_frame[i]
 
 
-                # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores
-                Foco = Focar()
-                mask = cv2.bitwise_and(rotatedr, rotatedr, mask = thresh)
-                comp_pc, larg_pc = Foco.cutRectangle(cnts, mask, obj_atual, mmperPixel, hist="matplotlib")
-                
+                # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores                            
+                comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, thresh, Show_separate_Parts)
+
                 # Escreve na imagem
                 escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)
                 escrever(rotatedr, 'Comp {:0.1f}'.format(comp_pc)            , cX, cY-30)
@@ -193,6 +210,8 @@ while True:
     except:
         pass
     
+    #print("Buffer: " + str(len(Foco.StackedParts)) + " imgs")
+
     # Destroi as janelas das peças que sairam do quadro
     for num_obj in pcs_inframe_old:
         if not num_obj in pcs_inframe:
@@ -209,24 +228,28 @@ while True:
         for i in range(int(razao_horizontal/mmperPixel)): # isso pode dar problema pois está arredondando os valores
             imglog = np.concatenate((imglog, scan), axis=1)
     
-    if imglog.shape[1] < 1300:
-        cv2.imshow("Log", imglog)
-    else:
-        cv2.imshow("Log", imglog[:, -1300:-1])
+    if Show_Log_Window == True:
+        if imglog.shape[1] < 1300:
+            cv2.imshow("Log", imglog)
+        else:
+            cv2.imshow("Log", imglog[:, -1300:-1])
     
     # Desenha linhas e escreve na janela
     linegray = cv2.line(thresh,    (Align.scanlineYpos, Align.start_scan), (Align.scanlineYpos, Align.end_scan), (150),       2)
     linergb  = cv2.line(rotatedr , (Align.scanlineYpos, Align.start_scan), (Align.scanlineYpos, Align.end_scan), (0, 0, 255), 2)
     escrever(rotatedr, "{:01.2f} Metros quadrados!".format(m2)           , 10, 60)
     escrever(rotatedr, "{:0.1f} segundos".format(timeit.default_timer()) , 10, 95)
+    
 
     # Conta M2
     pixels = cv2.countNonZero(scan)
     m2 += ((pixels * mmperPixel)*razao_horizontal)/1000000
 
     # Mostra os videos
-    cv2.imshow("Linha UV BW", thresh)
-    cv2.imshow("Linha UV rgb", rotatedr)
+    if Show_Tresh_Window == True:
+        cv2.imshow("Linha UV BW", thresh)
+    if Show_Main_Window == True:
+        cv2.imshow("Linha UV rgb", rotatedr)
 
     # Delay a partir de determinado frame
     #if counterframe > 60:    
@@ -237,12 +260,14 @@ while True:
     key = cv2.waitKey(1) 
     if key == 27:
         break
-    cv2.imshow("Linha UV BW", thresh)
-    cv2.imshow("Linha UV rgb", rotatedr)
-
-
 
 print("{:0.2f} M² processados".format(m2))
 cap.release()
 
 cv2.destroyAllWindows()
+
+if Get_Velocity == True:
+    Velocity.stop()
+    
+if Use_QualityTest == True:    
+    QT.stop()

@@ -1,2 +1,9 @@
 /GTRLP_env/
 /Basler_camera/
+/classes/__pycache__/
+/__pycache__/
+/out/
+classes/desktop.ini
+/.ipynb_checkpoints/
+*/desktop.ini
+*.pyc

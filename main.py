@@ -43,8 +43,8 @@ Show_Tresh_Window   = GeneralConfig.getboolean('Window', 'Show_Tresh_Window')
 Show_Log_Window     = GeneralConfig.getboolean('Window', 'Show_Log_Window')
 Show_separate_Parts = GeneralConfig.getboolean('Window', 'Show_separate_Parts')
 
-Get_Velocity = GeneralConfig.getboolean('Modules', 'Get_Velocity')
-
+Get_Velocity    = GeneralConfig.getboolean('Modules', 'Get_Velocity')
+Use_QualityTest = GeneralConfig.getboolean('Modules', 'QualityTest')
 
 inputConfig = ConfigParser()
 inputConfig.read(r"classes\InputConfig.ini")
@@ -106,7 +106,8 @@ obj_novo         = False
 
 Foco = Focar()
 
-QT = QualityTest(VT.perfectPaternPath, Foco.StackedParts).start()
+if Use_QualityTest == True:
+    QT = QualityTest(VT.perfectPaternPath, Foco.StackedParts).start()
 
 if Get_Velocity == True:
     # Instância a classe que contém uma thread para acompanhar a velocidade da esteira
@@ -268,4 +269,5 @@ cv2.destroyAllWindows()
 if Get_Velocity == True:
     Velocity.stop()
     
-QT.stop()
+if Use_QualityTest == True:    
+    QT.stop()

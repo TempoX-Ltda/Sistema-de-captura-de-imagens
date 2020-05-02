@@ -7,3 +7,4 @@ classes/desktop.ini
 /.ipynb_checkpoints/
 */desktop.ini
 *.pyc
+.mypy_cache/

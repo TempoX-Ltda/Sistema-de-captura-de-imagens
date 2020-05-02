@@ -15,6 +15,7 @@ class VideoTresh():
         self.ColorConfig.read(self.ColorConfigPath)
         print('Arquivo de configurações de cor/padrão foi carregado: ' + str(ColorConfigPath))
         
+        self.perfectPaternPath = ''
         self.paternSelected = False
 
     def selectPatern(self , patern):
@@ -45,6 +46,7 @@ class VideoTresh():
             print('Não foi especificado corretamente o colorType!')
             exit()
 
+        self.perfectPaternPath = self.ColorConfig.get(patern, 'perfectPatern')
         self.paternSelected = True
 
     def getPartsContours(self, img):
@@ -113,7 +115,7 @@ class VideoAlign(object):
         if not self.CameraConfigPath.exists():
             print('O arquivo não pode ser carregado: ' + str(self.CameraConfigPath))
             exit()
-            
+
         self.CameraConfig.read(self.CameraConfigPath)
         print('Arquivo de configurações da Câmera foi carregado: ' + str(self.CameraConfigPath))
         self.start_scan         = 0

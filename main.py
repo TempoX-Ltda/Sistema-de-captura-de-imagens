@@ -106,7 +106,7 @@ obj_novo         = False
 
 Foco = Focar()
 
-QT = QualityTest('D:\GitHub\Repos\Gestao-Linha-UV\Videos Teste\JATOBA FINAL.jpg', Foco.StackedParts).start()
+QT = QualityTest(VT.perfectPaternPath, Foco.StackedParts).start()
 
 if Get_Velocity == True:
     # Instância a classe que contém uma thread para acompanhar a velocidade da esteira

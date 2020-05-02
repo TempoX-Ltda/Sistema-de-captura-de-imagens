@@ -5,3 +5,5 @@
 /out/
 classes/desktop.ini
 /.ipynb_checkpoints/
+*/desktop.ini
+*.pyc

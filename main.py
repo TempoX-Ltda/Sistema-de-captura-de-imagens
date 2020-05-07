@@ -110,11 +110,11 @@ if Use_QualityTest == True:
     QT = QualityTest(VT.perfectPaternPath, Foco.StackedParts).start()
 
 if Get_Velocity == True:
-    # Instância a classe que contém uma thread para acompanhar a velocidade da esteira
+    # Instância a classe para acompanhar a velocidade da esteira
     Velocity = getVelocity(Align.CameraConfigPath,
                            Align.paternName,
                            GeneralConfig.get('Modules', 'Get_Velocity_Mode'),
-                           fps).start()
+                           fps)
 
     encoderXYpos = Velocity.encoderXYpos
 
@@ -142,7 +142,7 @@ while True:
         
         for pos in encoderXYpos:
             EncoderColors.append(rotatedr[pos[1], pos[0]])
-
+            #print(EncoderColors)
         Velocity.sendEncoderColors(EncoderColors)
 
         if Velocity.showEncoderPos == True:
@@ -266,8 +266,5 @@ cap.release()
 
 cv2.destroyAllWindows()
 
-if Get_Velocity == True:
-    Velocity.stop()
-    
 if Use_QualityTest == True:    
     QT.stop()

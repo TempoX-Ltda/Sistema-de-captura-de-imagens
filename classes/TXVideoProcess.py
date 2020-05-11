@@ -79,34 +79,6 @@ class VideoTresh():
             print('Antes de executar "getPartsContours" você deve utilizar "selectPatern" para especificar qual a seção do arquivo de configurações você deseja utilizar!')
             exit()
 
-'''
-    def tresh_bt_cae(self, img): #Padrão BURITI CAEMMUN
-        suave = cv2.blur(img, (5,5))
-        hsv = cv2.cvtColor(suave,cv2.COLOR_BGR2HSV)
-        eroded = cv2.erode(hsv, None, iterations=5)
-        dilated = cv2.dilate(eroded, None, iterations=5)
-        thresh_hsv = cv2.inRange(dilated, (10, 30, 132), (26, 77, 176)) #[ 10  30 132] [ 26 77 176]
-        (contours, lx) = cv2.findContours(thresh_hsv.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        return (contours, thresh_hsv)
-
-    def tresh_bf_cae(self, img): #Padrão BRANCO FOSCO CAEMMUN
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        suave = cv2.blur(gray, (3,3))
-        eroded = cv2.erode(suave, None, iterations=5)
-        dilated = cv2.dilate(eroded, None, iterations=5)
-        thresh = cv2.threshold(dilated, 190, 255, cv2.THRESH_BINARY)[1]
-        (contours, lx) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        return (contours, thresh)
-
-    def tresh_esteira_branco(self, img): #Padrão Branco teste esteira
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        suave = cv2.blur(gray, (3,3))
-        eroded = cv2.erode(suave, None, iterations=5)
-        dilated = cv2.dilate(eroded, None, iterations=5)
-        thresh = cv2.threshold(dilated, 190, 255, cv2.THRESH_BINARY)[1]
-        (contours) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        return (contours, thresh)
-'''
 class VideoAlign(object):
     'Possui métodos que são utilizados para alinhar o video recebido pela câmera ou arquivo de vídeo.'
     def __init__(self, CameraConfigPath):
@@ -137,13 +109,29 @@ class VideoAlign(object):
         self.end_scan           = int(self.CameraConfig.get(self.paternName, 'scanlineEnd'))
         self.scanlineYpos       = int(self.CameraConfig.get(self.paternName, 'scanlineYPos'))
 
+        marksDistX              = float(self.CameraConfig.get(self.paternName, 'marksDistX'))
+        marksDistY              = float(self.CameraConfig.get(self.paternName, 'marksDistY'))
+        marksDistXpx            = float(self.CameraConfig.get(self.paternName, 'marksDistXpx'))
+        marksDistYpx            = float(self.CameraConfig.get(self.paternName, 'marksDistYpx'))
+
+        if (marksDistY * 1000) / marksDistYpx == (marksDistY * 1000) / marksDistYpx:
+            self.mmByPx = (marksDistY * 1000) / marksDistYpx
+        else:
+            print('mm/px em X é diferente de mm/px em Y, finalizando programa')
+            exit()
+            
         self.expectedPartsSizes = eval(self.CameraConfig.get(self.paternName, 'expectedPartsSizes'))
 
         for partnum, partsize in enumerate(self.expectedPartsSizes):
             print('O tamanho esperado da peça ' + str(partnum + 1) + ' é de ' + str(partsize[0]) + 'x' + str(partsize[1]) + 'mm')
     
-    def AlignFrame(self, img):
+    def AlignFrame(self, img, calibrateMode=False):
         resized = cv2.resize(img, self.resizedShape)
-        recort = resized[self.recortY[0]:self.recortY[1], 
-                         self.recortX[0]:self.recortX[1]]
+
+        if calibrateMode == True:
+            recort = resized
+        elif calibrateMode == False:
+            recort = resized[self.recortY[0]:self.recortY[1], 
+                             self.recortX[0]:self.recortX[1]]
+                        
         return imutils.rotate_bound(recort, self.rotateAngle)

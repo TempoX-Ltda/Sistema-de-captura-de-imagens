@@ -3,5 +3,6 @@
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": false,
-    "python.linting.mypyEnabled": true
+    "python.linting.mypyEnabled": true,
+    "clockify.tracking.workspaceId": "5dddc0164809562a2450e825"
 }

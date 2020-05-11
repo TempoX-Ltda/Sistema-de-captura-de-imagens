@@ -21,7 +21,7 @@ def escrever(imagem, texto, x, y):
 
 def checkfile(arquivo):
     if not os.path.exists(arquivo):
-        print('Caminho para arquivo de vídeo não existente!')
+        print('Caminho para arquivo de vídeo não existente! ' + str(arquivo))
         exit()
     else:
         print('Utilizando arquivo: ' + str(arquivo))
@@ -66,13 +66,13 @@ while True:
         method = str(inputConfig.sections()[method - 1])
         break
 
-videoPath = inputConfig.get(method, "path")
+videoPath = Path(inputConfig.get(method, "path"))
 
 cap = ''
 
 if inputConfig.get(method, "type") == "file":
     checkfile(videoPath)
-    cap = cv2.VideoCapture(videoPath)
+    cap = cv2.VideoCapture(str(videoPath))
 elif inputConfig.get(method, "type") == "camera":
     cap = cv2.VideoCapture(int(videoPath))
 else:

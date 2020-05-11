@@ -9,3 +9,5 @@ classes/desktop.ini
 .mypy_cache/
 *.pyc
 *.code-workspace
+/Renders/
+classes/__pycache__/*

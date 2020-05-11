@@ -4,7 +4,7 @@
 
 - Execute o código "main.py" que está na pasta raiz
 - Escolha alguma das opções disponíveis para teste.
-- Os arquivos do vídeo estão na pasta "Videos Teste"
+- Os arquivos do vídeo estão na pasta "Renders"
 
 ## Inserção de novos renders de teste ou nova câmera
 

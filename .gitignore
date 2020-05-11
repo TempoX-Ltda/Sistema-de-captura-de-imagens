@@ -8,3 +8,4 @@ classes/desktop.ini
 */desktop.ini
 .mypy_cache/
 *.pyc
+*.code-workspace

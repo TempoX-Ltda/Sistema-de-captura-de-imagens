@@ -29,8 +29,9 @@ class CalibrateRes():
             cv2.imshow(windowName, self.frame)
 
             key = cv2.waitKey(1) 
-            if key == 27 or self.clickPos != []:
+            if self.clickPos != []:
                 break
+            
         cv2.destroyAllWindows()
 
         # Coleta a cor do pixel onde foi feito o clique
@@ -41,7 +42,7 @@ class CalibrateRes():
         # Guarda a posição do mouse ao efetuar o clique
         if event == cv2.EVENT_LBUTTONDOWN:
             self.clickPos = [x, y]
-        
+
         # Passa adiante caso outro evento do Mouse for executado
         else:
             pass

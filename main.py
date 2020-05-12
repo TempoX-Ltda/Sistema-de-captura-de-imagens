@@ -32,18 +32,20 @@ while True:
 
     # Coleta e valida a entrada do usuário
     while True:
+        try:
+            response = input("Informe a forma de execução da análise:")
+            
+            if response.lower() == 'q':
+                print("Finalizando código.")
+                exit()
+            else:
+                response = int(response)
 
-        response = input("Informe a forma de execução da análise:")
-        
-        if response.lower() == 'q':
-            print("Finalizando código.")
-            exit()
-        else:
-            response = int(response)
-
-        if response < len(inputConfig.sections()) + 1 and response != 0:
-            method = str(inputConfig.sections()[response - 1])
-            break
+            if response < len(inputConfig.sections()) + 1 and response != 0:
+                method = str(inputConfig.sections()[response - 1])
+                break
+        except:
+            pass
 
     videoPath = Path(inputConfig.get(method, "path"))
 
@@ -75,14 +77,17 @@ while True:
     # "ColorConfig.ini" com base no método de vídeo do arquivo "InputConfig.ini"
     VT.selectPatern(inputConfig.get(method, "colorPatern"))
 
-    print('"c" para calibrar mm/px')
-    print('"r" para rodar algoritmo')
-    response = input()
+    while True:
+        print('"c" para calibrar mm/px')
+        print('"r" para rodar algoritmo')
+        response = input()
 
-    if response.lower() == 'r':
-        L = loop()
-        L.loop(Align, VT, cap)
+        if response.lower() == 'r':
+            L = loop()
+            L.loop(Align, VT, cap)
+            break
 
-    elif response.lower() == 'c':
-        Calibrate = CalibrateRes(cap, Align, cameraConfigPath)
-        Calibrate.calibrate(inputConfig.get(method, "cameraAlign"))
+        elif response.lower() == 'c':
+            Calibrate = CalibrateRes(cap, Align, cameraConfigPath)
+            Calibrate.calibrate(inputConfig.get(method, "cameraAlign"))
+            break

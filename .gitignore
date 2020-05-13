@@ -11,3 +11,4 @@ classes/desktop.ini
 *.code-workspace
 /Renders/
 classes/__pycache__/*
+/log/

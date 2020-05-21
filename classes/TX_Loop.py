@@ -66,20 +66,29 @@ class loop():
                                 fps)
 
             encoderXYpos = Velocity.encoderXYpos
+        else:
+            print('O módulo de velocidade está desativado, será considerada para os cálculos uma velocidade de 18 metros/min')
+            razao_horizontal = 18 / fps # "resolução" horizontal de captura
 
         while True:
             ret, frame = cap.read()
 
             if ret != True: #Valida se o frame existe
                 break
-
-            razao_horizontal = Velocity.get() / fps # "resolução" horizontal de captura
+            
+            if Get_Velocity == True: 
+                razao_horizontal = Velocity.get() / fps # "resolução" horizontal de captura
+            
             counterframe   += 1
             objs_old        = objs_frame
             pcs_inframe_old = pcs_inframe
             objs_frame      = []
             obj_atual       = []
             pcs_inframe     = []
+
+            if counterframe == 120:
+                print("")
+
 
             #Inicia cronômetro
             tempo_inicio = timeit.default_timer()

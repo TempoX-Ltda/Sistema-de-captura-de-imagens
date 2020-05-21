@@ -33,6 +33,7 @@ class loop():
         Show_Tresh_Window   = GeneralConfig.getboolean('Window', 'Show_Tresh_Window')
         Show_Log_Window     = GeneralConfig.getboolean('Window', 'Show_Log_Window')
         Show_separate_Parts = GeneralConfig.getboolean('Window', 'Show_separate_Parts')
+        Draw_contours       = GeneralConfig.get('Window', 'Draw_contours')
 
         Get_Velocity    = GeneralConfig.getboolean('Modules', 'Get_Velocity')
         Use_QualityTest = GeneralConfig.getboolean('Modules', 'QualityTest')
@@ -95,7 +96,10 @@ class loop():
 
             rotatedr = Align.AlignFrame(frame)
             (contours, thresh) = VT.getPartsContours(rotatedr)
-            
+
+            if Draw_contours.lower() == 'all':
+                cv2.drawContours(rotatedr, contours, -1, (0,255,0), 4)
+
             if Get_Velocity == True:
                 EncoderColors    = []
                 
@@ -109,85 +113,88 @@ class loop():
                         rotatedr = cv2.circle(rotatedr, tuple(encoder), 15, (255, 0, 0), thickness=3, lineType=8, shift=0) 
 
                 self.escrever(rotatedr, "{:01.2f} M/s".format(Velocity.get()), 10, 130)
-            try:
-                for cnts in contours: # Itera entre os contornos do Frame
 
-                    quadroanterior = []
+            #try:
+            for cnts in contours: # Itera entre os contornos do Frame
+                
+                if Draw_contours.lower() == 'by_parts':
+                    cv2.drawContours(rotatedr, [cnts], -1, (0,255,0), 4)
+
+                quadroanterior = []
+                
+                M = cv2.moments(cnts)
+
+                if M['m00'] != 0 and cv2.contourArea(cnts) > 20000: # Valor de área minimo para reconhecer como objeto
                     
-                    M = cv2.moments(cnts)
+                    cX = int(M['m10'] / M['m00'])
+                    cY = int(M['m01'] / M['m00'])
 
-                    if M['m00'] != 0 and cv2.contourArea(cnts) > 20000: # Valor de área minimo para reconhecer como objeto
-                        
-                        cX = int(M['m10'] / M['m00'])
-                        cY = int(M['m01'] / M['m00'])
+                    counterobj += 1
+                    obj_atual = [counterframe,idpeca,cX,cY,cv2.contourArea(cnts)]
 
-                        counterobj += 1
-                        obj_atual = [counterframe,idpeca,cX,cY,cv2.contourArea(cnts)]
+                    if counterobj > 1:
+                        if len(objs_old) != 0:
+                            for i in range(len(objs_old)): # Itera para comparar obj atual com objs do frame anterior
 
-                        if counterobj > 1:
-                            if len(objs_old) != 0:
-                                for i in range(len(objs_old)): # Itera para comparar obj atual com objs do frame anterior
+                                cXa = int(objs_old[i][2])
+                                cYa = int(objs_old[i][3])
 
-                                    cXa = int(objs_old[i][2])
-                                    cYa = int(objs_old[i][3])
-
-                                    # Verifica se a peça do frame anterior é a mesma do frame atual
-                                    # Utilizando como referência a posição na tela
-                                    if abs(cXa - cX) < 50 and abs(cYa - cY) < 50: 
-                                        obj_atual[1] = objs_old[i][1]
-                                        obj_novo = False
-                                        break
-                                    else:
-                                        obj_novo = True
-                            else:
-                                if abs(cX - last_obj[2]) > 100:
+                                # Verifica se a peça do frame anterior é a mesma do frame atual
+                                # Utilizando como referência a posição na tela
+                                if abs(cXa - cX) < 50 and abs(cYa - cY) < 50: 
+                                    obj_atual[1] = objs_old[i][1]
+                                    obj_novo = False
+                                    break
+                                else:
                                     obj_novo = True
-                            
-                            if obj_novo == True: # ID +1
-                                idpeca += 1    
-                                obj_atual[1] = idpeca
+                        else:
+                            if abs(cX - last_obj[2]) > 100:
+                                obj_novo = True
+                        
+                        if obj_novo == True: # ID +1
+                            idpeca += 1    
+                            obj_atual[1] = idpeca
 
-                        objetos.append(obj_atual)
-                        objs_frame.append(obj_atual)
-                        pcs_inframe.append(obj_atual[1])
+                    objetos.append(obj_atual)
+                    objs_frame.append(obj_atual)
+                    pcs_inframe.append(obj_atual[1])
 
-                        # Identifica o último objeto que passou           
-                        for i in range(len(objs_frame)):
-                            if objs_frame[i][2] < referencia:
-                                referencia = objs_frame[i][2]
-                                last_obj = objs_frame[i]
+                    # Identifica o último objeto que passou           
+                    for i in range(len(objs_frame)):
+                        if objs_frame[i][2] < referencia:
+                            referencia = objs_frame[i][2]
+                            last_obj = objs_frame[i]
 
 
-                        # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores                            
-                        comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, thresh, Show_separate_Parts)
+                    # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores                            
+                    comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, thresh, Show_separate_Parts)
 
-                        # Escreve na imagem
-                        self.escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)
-                        self.escrever(rotatedr, 'Comp {:0.1f}'.format(comp_pc)            , cX, cY-30)
-                        self.escrever(rotatedr, 'Larg {:0.1f}'.format(larg_pc)            , cX, cY+30)       
-                        escrever(rotatedr, '{:0.05f} M2'.format(obj_atual[4]/1000000*mmperPixel)  , cX, cY+45)
-            except:
-                pass
-            
-            #print("Buffer: " + str(len(Foco.StackedParts)) + " imgs")
+                    # Escreve na imagem
+                    self.escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)
+                    self.escrever(rotatedr, 'Comp {:0.1f}'.format(comp_pc)            , cX, cY-30)
+                    self.escrever(rotatedr, 'Larg {:0.1f}'.format(larg_pc)            , cX, cY+30)       
+                    self.escrever(rotatedr, '{:0.05f} M2'.format(obj_atual[4]/1000000*mmperPixel)  , cX, cY+60)
+            #except:
+            #    pass
 
-            # Destroi as janelas das peças que sairam do quadro
-            for num_obj in pcs_inframe_old:
-                if not num_obj in pcs_inframe:
-                    cv2.destroyWindow('pc' + str(num_obj))
+            if Show_separate_Parts == True:
+                # Destroi as janelas das peças que sairam do quadro
+                for num_obj in pcs_inframe_old:
+                    if not num_obj in pcs_inframe:
+                        cv2.destroyWindow('pc' + str(num_obj))
 
-            escanear = thresh.copy()
-            scan = escanear[Align.start_scan : Align.end_scan,
-                            Align.scanlineYpos : Align.scanlineYpos+1]
-            
-            # Cria e monta a janela de "log"
-            if counterframe == 1:
-                imglog = scan
-            else:
-                for i in range(int(razao_horizontal/mmperPixel)): # isso pode dar problema pois está arredondando os valores
-                    imglog = np.concatenate((imglog, scan), axis=1)
-            
             if Show_Log_Window == True:
+                escanear = thresh.copy()
+                scan = escanear[Align.start_scan : Align.end_scan,
+                                Align.scanlineYpos : Align.scanlineYpos+1]
+                
+                # Cria e monta a janela de "log"
+                if counterframe == 1:
+                    imglog = scan
+                else:
+                    for i in range(int(razao_horizontal/mmperPixel)): # isso pode dar problema pois está arredondando os valores
+                        imglog = np.concatenate((imglog, scan), axis=1)
+            
                 if imglog.shape[1] < 1300:
                     cv2.imshow("Log", imglog)
                 else:
@@ -199,7 +206,6 @@ class loop():
             self.escrever(rotatedr, "{:01.2f} Metros quadrados!".format(m2)           , 10, 60)
             self.escrever(rotatedr, "{:0.1f} segundos".format(timeit.default_timer()) , 10, 95)
             
-
             # Conta M2
             pixels = cv2.countNonZero(scan)
             m2 += ((pixels * mmperPixel)*razao_horizontal)/1000000

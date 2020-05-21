@@ -4,6 +4,10 @@
 
 - Execute o código "main.py" que está na pasta raiz
 - Escolha alguma das opções disponíveis para teste.
+<<<<<<< HEAD
+=======
+- Os arquivos do vídeo estão na pasta "Videos Teste"
+>>>>>>> parent of d0f9378... Nome da pasta "Videos Teste" para "renders"
 
 ## Inserção de novos renders de teste ou nova câmera
 

@@ -183,11 +183,12 @@ class loop():
                     if not num_obj in pcs_inframe:
                         cv2.destroyWindow('pc' + str(num_obj))
 
-            if Show_Log_Window == True:
-                escanear = thresh.copy()
-                scan = escanear[Align.start_scan : Align.end_scan,
-                                Align.scanlineYpos : Align.scanlineYpos+1]
-                
+
+            escanear = thresh.copy()
+            scan = escanear[Align.start_scan : Align.end_scan,
+                            Align.scanlineYpos : Align.scanlineYpos+1]
+
+            if Show_Log_Window == True:                
                 # Cria e monta a janela de "log"
                 if counterframe == 1:
                     imglog = scan

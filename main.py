@@ -107,12 +107,16 @@ try:
 except Exception as Error:
     traceback.print_exc(file=log)
     log.close()   
+    with open(logpath, 'r') as myfile:
+        data = myfile.read()
 
+    print(data)   
+
+    print('Ocorreu um erro que impede a continuação do sistema!\n')
+    
     response = input("Deseja enviar esse log para análise? (S/N)")
     
     if response.lower() == "s" or response.lower() == "sim":
-        with open(logpath, 'r') as myfile:
-            data = myfile.read()
-        print(data)
-        make_github_issue('TempoX-Ltda', 'Gestao-Linha-UV', str(Error), data, ['Testes'])
-    
+        make_github_issue('TempoX-Ltda', 'Gestao-Linha-UV', str(Error), body=str(data), labels=["Testes"])
+    if response.lower() == "n" or response.lower() == "não":
+        exit

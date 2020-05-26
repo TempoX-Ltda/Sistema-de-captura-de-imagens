@@ -96,11 +96,26 @@ class getVelocity():
 
         self.newColor = False
 
-    def get(self):
-        'Retorna a velocidade com que a esteira está se movendo'
+    def get(self, unit='m/min'):
+        '''Retorna a velocidade com que a esteira está se movendo
         
-        return self.velocity
-    
+        Você pode informar a unidade de medida que deseja por meio do parâmetro "unit=",\
+        caso não seja informado, será utilizado por padrão a unidade "m/min"
+
+        Você pode utilizar as seguintes unidades:
+        - "m/min": Metros por Minuto
+        - "m/sec": Metros por Segundo
+        - "mm/sec": Milimetros por Segundo
+        
+        '''
+
+        if unit == 'm/min':
+            return self.velocity
+        if unit == 'm/sec':
+            return self.velocity / 60
+        if unit == 'mm/sec':
+            return self.velocity * (100 / 6)
+
     def sendEncoderColors(self, EncoderColors):
         self.EncoderColors = EncoderColors
         self.QtdFrames += 1

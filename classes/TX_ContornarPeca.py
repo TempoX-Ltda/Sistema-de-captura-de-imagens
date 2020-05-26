@@ -63,4 +63,4 @@ class ContornarPeca:
         warped = warpPerspective(image, M, (maxWidth, maxHeight))
 
         # return the warped image
-        return (warped, widthA, heightA)
+        return (warped, maxWidth, maxHeight)

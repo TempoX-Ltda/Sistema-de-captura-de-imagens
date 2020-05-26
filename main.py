@@ -111,7 +111,7 @@ except Exception as Error:
     with open(logpath, 'r') as myfile:
         data = myfile.read()
 
-    print(data)   
+    print(data)
 
     print('Ocorreu um erro que impede a continuação do sistema!\n')
     

@@ -74,7 +74,7 @@ class loop():
             encoderXYpos = Velocity.encoderXYpos
         else:
             print('O módulo de velocidade está desativado, será considerada para os cálculos uma velocidade de 18 metros/min')
-            razao_horizontal = 18 / fps # "resolução" horizontal de captura
+            razao_horizontal = 0.0003 / fps # "resolução" horizontal de captura
 
         while True:
             ret, frame = cap.read()
@@ -83,7 +83,7 @@ class loop():
                 break
             
             if Get_Velocity == True: 
-                razao_horizontal = Velocity.get() / fps # "resolução" horizontal de captura
+                razao_horizontal = (Velocity.get(unit='mm/sec')) / fps # "resolução" horizontal de captura
             
             counterframe   += 1
             objs_old        = objs_frame
@@ -91,10 +91,6 @@ class loop():
             objs_frame      = []
             obj_atual       = []
             pcs_inframe     = []
-
-            if counterframe == 120:
-                print("")
-
 
             #Inicia cronômetro
             tempo_inicio = timeit.default_timer()
@@ -188,10 +184,12 @@ class loop():
                     if not num_obj in pcs_inframe:
                         cv2.destroyWindow('pc' + str(num_obj))
 
-
-            escanear = thresh.copy()
-            scan = escanear[Align.start_scan : Align.end_scan,
+            # Conta M2
+            scan = thresh[Align.start_scan : Align.end_scan,
                             Align.scanlineYpos : Align.scanlineYpos+1]
+
+            pixels = cv2.countNonZero(scan)
+            m2 += ((pixels * mmperPixel)*razao_horizontal)/1000000
 
             if Show_Log_Window == True:                
                 # Cria e monta a janela de "log"
@@ -212,9 +210,7 @@ class loop():
             self.escrever(rotatedr, "{:01.2f} Metros quadrados!".format(m2)           , 10, 60)
             self.escrever(rotatedr, "{:0.1f} segundos".format(timeit.default_timer()) , 10, 95)
             
-            # Conta M2
-            pixels = cv2.countNonZero(scan)
-            m2 += ((pixels * mmperPixel)*razao_horizontal)/1000000
+
 
             # Mostra os videos
             if Show_Tresh_Window == True:

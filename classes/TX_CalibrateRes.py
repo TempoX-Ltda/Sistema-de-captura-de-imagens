@@ -17,6 +17,8 @@ class CalibrateRes():
         ret, frame = self.video.read()
         self.frame = self.Align.AlignFrame(frame, calibrateMode=True)
 
+        #cv2.imwrite('frame.jpg', self.frame)
+
         windowName = 'Selecione um dos pontos de referencia' 
         cv2.namedWindow(windowName)
         
@@ -31,7 +33,7 @@ class CalibrateRes():
             key = cv2.waitKey(1) 
             if self.clickPos != []:
                 break
-            
+
         cv2.destroyAllWindows()
 
         # Coleta a cor do pixel onde foi feito o clique

@@ -96,7 +96,8 @@ class VideoAlign(object):
 
         self.expectedPartsSizes = []
         self.paternName = ''
-
+        self.mmByPx = 0
+        
     def selectPatern(self, patern):
         'Selecione como "Patern" o nome da seção do arquivo .ini que você passou ao instânciar VideoAlign.'
         self.paternName = patern
@@ -127,7 +128,7 @@ class VideoAlign(object):
     
     def AlignFrame(self, img, calibrateMode=False):
         resized = cv2.resize(img, self.resizedShape)
-
+        
         if calibrateMode == True:
             recort = resized
         elif calibrateMode == False:

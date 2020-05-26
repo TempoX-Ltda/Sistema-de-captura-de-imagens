@@ -104,6 +104,7 @@ try:
                 Calibrate = CalibrateRes(cap, Align, cameraConfigPath)
                 Calibrate.calibrate(inputConfig.get(method, "cameraAlign"))
                 break
+
 except Exception as Error:
     traceback.print_exc(file=log)
     log.close()   

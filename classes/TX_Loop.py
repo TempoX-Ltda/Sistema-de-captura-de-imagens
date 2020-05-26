@@ -38,6 +38,11 @@ class loop():
         Get_Velocity    = GeneralConfig.getboolean('Modules', 'Get_Velocity')
         Use_QualityTest = GeneralConfig.getboolean('Modules', 'QualityTest')
 
+        if Show_separate_Parts == True:
+            Histogram_plot = GeneralConfig.getboolean('Modules', 'Histogram_plot')
+        else:
+            Histogram_plot = False
+
         mmperPixel       = Align.mmByPx
 
         fps              = 30
@@ -167,7 +172,7 @@ class loop():
 
 
                     # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores                            
-                    comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, thresh, Show_separate_Parts)
+                    comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, thresh, Show_separate_Parts, hist=Histogram_plot)
 
                     # Escreve na imagem
                     self.escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)

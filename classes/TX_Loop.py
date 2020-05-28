@@ -35,9 +35,9 @@ class loop():
         Show_separate_Parts = GeneralConfig.getboolean('Window', 'Show_separate_Parts')
         Draw_contours       = GeneralConfig.get('Window', 'Draw_contours')
 
-        Get_Velocity    = GeneralConfig.getboolean('Modules', 'Get_Velocity')
-        Use_QualityTest = GeneralConfig.getboolean('Modules', 'QualityTest')
-
+        Get_Velocity               = GeneralConfig.getboolean('Modules', 'Get_Velocity')
+        Use_QualityTest            = GeneralConfig.getboolean('Modules', 'QualityTest')
+        
         if Show_separate_Parts == True:
             Histogram_plot = GeneralConfig.getboolean('Modules', 'Histogram_plot')
         else:
@@ -95,31 +95,31 @@ class loop():
             #Inicia cronômetro
             tempo_inicio = timeit.default_timer()
 
-            rotatedr = Align.AlignFrame(frame)
-            (contours, thresh) = VT.getPartsContours(rotatedr)
+            frame = Align.AlignFrame(frame)
+            frame_to_parts = frame.copy()
+
+            (contours, thresh) = VT.getPartsContours(frame)
 
             if Draw_contours.lower() == 'all':
-                cv2.drawContours(rotatedr, contours, -1, (0,255,0), 4)
+                cv2.drawContours(frame, contours, -1, (0,255,0), 4)
 
             if Get_Velocity == True:
                 EncoderColors    = []
                 
                 for pos in encoderXYpos:
-                    EncoderColors.append(rotatedr[pos[1], pos[0]])
+                    EncoderColors.append(frame[pos[1], pos[0]])
                     #print(EncoderColors)
                 Velocity.sendEncoderColors(EncoderColors)
 
                 if Velocity.showEncoderPos == True:
                     for encoder in encoderXYpos:
-                        rotatedr = cv2.circle(rotatedr, tuple(encoder), 15, (255, 0, 0), thickness=3, lineType=8, shift=0) 
-
-                self.escrever(rotatedr, "{:01.2f} M/s".format(Velocity.get()), 10, 130)
+                        frame = cv2.circle(frame, tuple(encoder), 15, (255, 0, 0), thickness=3, lineType=8, shift=0) 
 
             #try:
             for cnts in contours: # Itera entre os contornos do Frame
                 
                 if Draw_contours.lower() == 'by_parts':
-                    cv2.drawContours(rotatedr, [cnts], -1, (0,255,0), 4)
+                    cv2.drawContours(frame, [cnts], -1, (0,255,0), 4)
 
                 quadroanterior = []
                 
@@ -159,22 +159,21 @@ class loop():
                     objetos.append(obj_atual)
                     objs_frame.append(obj_atual)
                     pcs_inframe.append(obj_atual[1])
-
+                    print(pcs_inframe)
                     # Identifica o último objeto que passou           
                     for i in range(len(objs_frame)):
                         if objs_frame[i][2] < referencia:
                             referencia = objs_frame[i][2]
                             last_obj = objs_frame[i]
 
-
                     # Mostra cada peça individualmente na tela, hist mostra também o histograma de cores                            
-                    comp_pc, larg_pc = Foco.cutRectangle(cnts, rotatedr, obj_atual, mmperPixel, thresh, Show_separate_Parts, hist=Histogram_plot)
+                    comp_pc, larg_pc = Foco.cutRectangle(cnts, frame_to_parts, obj_atual, mmperPixel, thresh, Show_separate_Parts, hist=Histogram_plot)
 
                     # Escreve na imagem
-                    self.escrever(rotatedr, 'Pc {}'.format(obj_atual[1])              , cX, cY)
-                    self.escrever(rotatedr, 'Comp {:0.1f}'.format(comp_pc)            , cX, cY-30)
-                    self.escrever(rotatedr, 'Larg {:0.1f}'.format(larg_pc)            , cX, cY+30)       
-                    self.escrever(rotatedr, '{:0.05f} M2'.format(obj_atual[4]/1000000*mmperPixel)  , cX, cY+60)
+                    self.escrever(frame, 'Pc {}'.format(obj_atual[1])              , cX, cY)
+                    self.escrever(frame, 'Comp {:0.1f}'.format(comp_pc)            , cX, cY-30)
+                    self.escrever(frame, 'Larg {:0.1f}'.format(larg_pc)            , cX, cY+30)       
+                    self.escrever(frame, '{:0.05f} M2'.format(obj_atual[4]/1000000*mmperPixel)  , cX, cY+60)
             #except:
             #    pass
 
@@ -206,17 +205,18 @@ class loop():
             
             # Desenha linhas e escreve na janela
             linegray = cv2.line(thresh,    (Align.scanlineYpos, Align.start_scan), (Align.scanlineYpos, Align.end_scan), (150),       2)
-            linergb  = cv2.line(rotatedr , (Align.scanlineYpos, Align.start_scan), (Align.scanlineYpos, Align.end_scan), (0, 0, 255), 2)
-            self.escrever(rotatedr, "{:01.2f} Metros quadrados!".format(m2)           , 10, 60)
-            self.escrever(rotatedr, "{:0.1f} segundos".format(timeit.default_timer()) , 10, 95)
+            linergb  = cv2.line(frame , (Align.scanlineYpos, Align.start_scan), (Align.scanlineYpos, Align.end_scan), (0, 0, 255), 2)
+            self.escrever(frame, "{:01.2f} Metros quadrados!".format(m2)           , 10, 60)
+            self.escrever(frame, "{:0.1f} segundos".format(timeit.default_timer()) , 10, 95)
             
-
+            if Get_Velocity == True:
+                self.escrever(frame, "{:01.2f} M/s".format(Velocity.get()), 10, 130)
 
             # Mostra os videos
             if Show_Tresh_Window == True:
                 cv2.imshow("Linha UV BW", thresh)
             if Show_Main_Window == True:
-                cv2.imshow("Linha UV rgb", rotatedr)
+                cv2.imshow("Linha UV rgb", frame)
 
             # Delay a partir de determinado frame
             #if counterframe > 60:    
@@ -227,6 +227,8 @@ class loop():
             if key == 27:
                 break
             
+        
+        print(Foco.Parts)
 
         print("{:0.2f} M² processados".format(m2))
         cap.release()

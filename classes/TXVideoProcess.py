@@ -94,7 +94,6 @@ class VideoAlign(object):
         self.end_scan           = 0
         self.scanlineYpos       = 0
 
-        self.expectedPartsSizes = []
         self.paternName = ''
         self.mmByPx = 0
         
@@ -120,12 +119,7 @@ class VideoAlign(object):
         else:
             print('mm/px em X é diferente de mm/px em Y, finalizando programa')
             exit()
-            
-        self.expectedPartsSizes = eval(self.CameraConfig.get(self.paternName, 'expectedPartsSizes'))
 
-        for partnum, partsize in enumerate(self.expectedPartsSizes):
-            print('O tamanho esperado da peça ' + str(partnum + 1) + ' é de ' + str(partsize[0]) + 'x' + str(partsize[1]) + 'mm')
-    
     def AlignFrame(self, img, calibrateMode=False):
         resized = cv2.resize(img, self.resizedShape)
         

@@ -8,7 +8,7 @@ class Focar():
 
     def __init__(self):
 
-        self.StackedParts = []
+        self.Parts = {}
 
     def histogramMatPlotLib(self, image):
         fig, ax = plt.subplots()
@@ -42,13 +42,22 @@ class Focar():
         (image_cut, widthA, heightA) = CntPc.four_point_transform(0, maskedimage, box)
         comp_pc = widthA  * precision
         larg_pc = heightA * precision
-
-        self.StackedParts.append(image_cut)
+        
+        # Armazena num 'dict' todas as peças no momento em que elas estão em seu maior tamanho na tela
+        if not id_obj[1] in self.Parts:
+            self.Parts[id_obj[1]] = {'comp':comp_pc,
+                                    'larg':larg_pc,
+                                    'img_array':image_cut}
+        else:
+            if comp_pc > self.Parts[id_obj[1]]['comp'] and larg_pc > self.Parts[id_obj[1]]['larg']:
+                self.Parts[id_obj[1]] = {'comp':comp_pc,
+                                         'larg':larg_pc,
+                                         'img_array':image_cut}
+        
+        if showWindow == True:        
+            cv2.imshow('pc' + str(id_obj[1]), image_cut)
         
         if hist == True:
             image_cut = Focar.histogramMatPlotLib(self, image_cut)
-
-        if showWindow == True:        
-            cv2.imshow('pc' + str(id_obj[1]), image_cut)
 
         return comp_pc, larg_pc

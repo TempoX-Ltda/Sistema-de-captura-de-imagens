@@ -2,17 +2,12 @@ from __future__ import print_function
 from __future__ import division
 import cv2 as cv
 import numpy as np
-import argparse
 
 #############################################################  
 ################## CALCULO DO HISTOGRAMA ####################
 ############################################################# 
 
 #Carrega a imagem do diretório 
-parser = argparse.ArgumentParser(description='Code for Histogram Calculation tutorial.')
-parser.add_argument('--input', default='Analisequalidadeopencv\peca1.jpg')#caminho para o ROI padrão
-parser.add_argument('--input1', default='Analisequalidadeopencv\peca1 riscada.jpg')#caminho para a peça a ser analisada
-args = parser.parse_args()
 roipadrao = cv.imread(cv.samples.findFile(args.input))
 pecanalisar = cv.imread(cv.samples.findFile(args.input1))
 

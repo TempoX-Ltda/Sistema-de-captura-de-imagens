@@ -37,19 +37,10 @@ class templateMatching():
             # Desenha o retângulo no padrão
             cv2.rectangle(img,top_left, bottom_right, 255, 2)
 
-            box = img[top_left[1]:top_left[1]+h,0:bottom_right[1]+w]
-            cv2.imshow("cropped", box)
-            cv2.waitKey(0)
+            
             
 
-
-            
-
-           
-
-            
-
-
+          
         return (res, img)
 
 

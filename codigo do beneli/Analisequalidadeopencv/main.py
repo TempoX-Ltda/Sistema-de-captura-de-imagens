@@ -19,7 +19,9 @@ for filename in os.listdir(directory):
         plt.subplot(122),plt.imshow(img,cmap = 'gray')
         plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
 
-        plt.show()
+        plt.show( )
+
+
 
     else:
         continue

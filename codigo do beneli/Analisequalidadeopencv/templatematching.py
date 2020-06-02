@@ -1,4 +1,4 @@
-import cv2 as cv
+import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -7,33 +7,47 @@ from matplotlib import pyplot as plt
 class templateMatching():
 
     def __init__(self, paternPath):
-        img = cv.imread(paternPath,0)
+        img = cv2.imread(paternPath,0)
         self.img2 = img.copy()
 
     def find(self, partPath):
-        template = cv.imread(partPath,0)
+        template = cv2.imread(partPath,0)
         w, h = template.shape[::-1]
 
         # All the 6 methods for comparison in a list
-        methods = ['cv.TM_CCOEFF', 'cv.TM_CCOEFF_NORMED', 'cv.TM_CCORR',
-                    'cv.TM_CCORR_NORMED', 'cv.TM_SQDIFF', 'cv.TM_SQDIFF_NORMED']
+        methods = ['cv2.TM_CCOEFF', 'cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR',
+                    'cv2.TM_CCORR_NORMED', 'cv2.TM_SQDIFF', 'cv2.TM_SQDIFF_NORMED']
 
         for meth in methods:
             img = self.img2.copy()
             method = eval(meth)
 
             # Apply template Matching
-            res = cv.matchTemplate(img,template,method)
-            min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
+            res = cv2.matchTemplate(img,template,method)
+            min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
 
             # If the method is TM_SQDIFF or TM_SQDIFF_NORMED, take minimum
-            if method in [cv.TM_SQDIFF, cv.TM_SQDIFF_NORMED]:
+            if method in [cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]:
                 top_left = min_loc
             else:
                 top_left = max_loc
             bottom_right = (top_left[0] + w, top_left[1] + h)
 
-            cv.rectangle(img,top_left, bottom_right, 255, 2)
+
+            # Desenha o retângulo no padrão
+            cv2.rectangle(img,top_left, bottom_right, 255, 2)
+
+            box = img[top_left[1]:top_left[1]+h,0:bottom_right[1]+w]
+            cv2.imshow("cropped", box)
+            cv2.waitKey(0)
+            
+
+
+            
+
+           
+
+            
 
 
         return (res, img)

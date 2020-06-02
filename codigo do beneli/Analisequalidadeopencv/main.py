@@ -14,9 +14,9 @@ for filename in os.listdir(directory):
 
         res, img = tm.find(partPath)
 
-        plt.subplot(121),plt.imshow(res,cmap = 'grey')
+        plt.subplot(121),plt.imshow(res,cmap = 'gray')
         plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
-        plt.subplot(122),plt.imshow(img,cmap = 'grey')
+        plt.subplot(122),plt.imshow(img,cmap = 'gray')
         plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
 
         plt.show( )

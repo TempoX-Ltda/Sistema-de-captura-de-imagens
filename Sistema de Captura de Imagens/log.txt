@@ -1,0 +1,446 @@
+13:31:12,141 02/11/2020 >> Att configurações.vi >> Atualizado Seção: Simulações Chave: Nível QualidadeValor:Ótima 
+13:31:12,143 02/11/2020 >> Att configurações.vi >> Atualizado Seção: Simulações Chave: TurnoValor:Turno 2 
+13:31:16,761 02/11/2020 >> Att configurações.vi >> Atualizado Seção: Simulações Chave: Nível QualidadeValor:Aceitável 
+13:31:16,761 02/11/2020 >> Att configurações.vi >> Atualizado Seção: Simulações Chave: TurnoValor:Turno 2 
+13:31:22,730 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+13:31:28,883 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+13:42:44,391 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> Atualizado Seção: Simulações Chave: Nível QualidadeValor:Ótima 
+13:42:44,391 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> Atualizado Seção: Simulações Chave: TurnoValor:Turno 2 
+13:42:51,490 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+13:45:15,234 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> CRIADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+13:45:15,234 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> CRIADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+13:45:17,198 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+15:29:53,682 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 1 
+15:29:53,681 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:30:49,022 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 1 
+15:30:49,022 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:30:49,025 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:30:49,026 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 1 
+15:30:58,400 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:30:58,402 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:31:02,075 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Aceitável 
+15:31:02,075 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:31:05,254 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+15:32:15,764 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 2 
+15:32:15,764 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:32:15,773 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:32:15,774 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 1 
+15:32:35,688 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:32:35,688 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:32:40,803 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Aceitável 
+15:32:40,804 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:32:52,887 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:32:52,887 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:33:06,931 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+15:33:59,586 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 2 
+15:33:59,586 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:33:59,594 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:33:59,594 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 1 
+15:34:04,196 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+15:36:02,385 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 1 
+15:36:02,384 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:36:02,398 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:36:02,403 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 1 
+15:36:55,347 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 1 
+15:36:55,347 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:36:55,360 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:36:55,363 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 1 
+15:38:03,519 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+15:38:25,594 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 1 
+15:38:25,593 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:38:25,603 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:38:25,604 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 1 
+15:38:41,953 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+15:39:38,766 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 1 
+15:39:38,766 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:39:38,778 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:39:38,781 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 1 
+15:39:54,253 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:39:54,253 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:39:58,948 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Aceitável 
+15:39:58,949 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:40:01,111 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+15:43:33,890 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 2 
+15:43:33,890 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:43:33,921 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:43:33,921 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:43:45,009 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+15:44:06,873 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 2 
+15:44:06,872 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:48:14,558 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 2 
+15:48:14,558 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:48:14,561 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:48:14,562 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:48:30,325 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Aceitável 
+15:48:30,325 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:48:33,113 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+15:48:45,293 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 1 
+15:48:45,293 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:48:45,296 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:48:45,297 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 1 
+15:48:55,078 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Aceitável 
+15:48:55,078 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:49:08,354 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+15:50:22,595 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 1 
+15:50:22,595 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:50:22,598 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+15:50:22,600 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 1 
+15:50:29,511 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:50:29,511 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:50:34,073 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+15:50:34,074 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+15:50:36,057 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:00:16,065 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:00:16,064 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:FALSE 
+16:00:16,064 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:00:16,062 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 2 
+16:00:16,061 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:00:16,072 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> CRIADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:00:16,071 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> CRIADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor: 
+16:00:16,070 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> CRIADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:00:16,068 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:00:16,069 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:00:35,586 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:00:35,588 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:00:35,589 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:00:35,590 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor: 
+16:00:35,591 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:00:37,388 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:00:48,715 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:00:48,714 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:FALSE 
+16:00:48,714 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:00:48,712 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 2 
+16:00:48,712 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:00:48,719 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:00:48,719 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:00:48,720 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:00:48,721 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor: 
+16:00:48,722 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:00:58,046 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:00:58,050 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:00:58,052 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:00:58,052 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor: 
+16:00:58,053 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:01:05,075 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:01:05,079 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:01:05,080 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:01:05,080 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor: 
+16:01:05,081 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:01:06,870 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:09:55,741 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:09:55,740 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:FALSE 
+16:09:55,740 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:09:55,738 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Turno, Valor:Turno 2 
+16:09:55,738 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURASeção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:09:55,745 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:09:55,746 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:09:55,748 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:09:55,750 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor: 
+16:09:55,753 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:10:03,273 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:10:03,279 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:10:03,280 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:10:03,281 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor: 
+16:10:03,282 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:10:05,368 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:12:17,240 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:12:17,240 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:FALSE 
+16:12:17,239 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:12:17,238 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:12:17,238 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:12:17,247 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:12:17,248 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:12:17,249 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:12:17,249 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor: 
+16:12:17,250 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:12:23,326 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:12:23,326 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:12:23,328 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:12:23,328 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor: 
+16:12:23,329 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:12:47,102 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:12:47,102 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:12:47,104 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:12:47,104 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor: 
+16:12:47,105 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:13:00,072 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:15:44,991 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de configuração, Valor: 
+16:15:44,990 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:FALSE 
+16:15:44,989 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:15:44,988 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:15:44,986 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:15:44,998 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:15:44,999 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:15:44,999 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:15:45,000 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:FALSE 
+16:15:45,001 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor:D:\GitHub\Repos\Sistema-de-captura-de-imagens\Sistema de Captura de Imagens\configs.ini 
+16:15:52,359 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:15:52,360 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:15:52,361 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:15:52,361 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:FALSE 
+16:15:52,363 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor:D:\GitHub\Repos\Sistema-de-captura-de-imagens\Sistema de Captura de Imagens\configs.ini 
+16:15:55,658 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:16:13,565 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de configuração, Valor:D:\GitHub\Repos\Sistema-de-captura-de-imagens\Sistema de Captura de Imagens\configs.ini 
+16:16:13,564 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:FALSE 
+16:16:13,563 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:16:13,562 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:16:13,561 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:16:13,572 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:16:13,572 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:16:13,573 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:16:13,574 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:FALSE 
+16:16:13,577 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor:D:\GitHub\Repos\Sistema-de-captura-de-imagens\Sistema de Captura de Imagens\configs.ini 
+16:16:20,795 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:16:20,796 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:16:20,797 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:16:20,797 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:16:20,798 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de configuração, Valor:D:\GitHub\Repos\Sistema-de-captura-de-imagens\Sistema de Captura de Imagens\configs.ini 
+16:16:22,214 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:28:32,677 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> Seção/Key não encontrada no arquivoSeção: Caminhos, Chave: Arquivo de log, Valor: 
+16:28:32,677 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:28:32,677 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:28:32,676 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:28:32,676 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:28:32,683 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> CRIADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:28:32,681 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:28:32,681 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:28:32,682 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:28:32,682 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:28:40,322 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:28:40,323 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:28:40,323 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:28:40,324 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:28:40,324 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:28:42,387 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:33:52,821 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:33:52,822 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:33:52,822 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:33:52,823 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:33:52,823 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:33:52,826 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:33:52,827 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:33:52,827 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:33:52,828 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:33:52,828 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:44:02,716 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:44:02,716 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:44:02,717 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:44:02,717 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:44:02,718 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:44:02,720 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:44:02,721 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:44:02,721 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:44:02,721 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:44:02,722 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:44:14,591 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:44:14,591 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:44:14,592 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:44:14,593 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:44:14,593 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:44:26,713 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:44:26,713 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:44:26,714 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:44:26,715 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:44:26,717 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:44:26,720 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ótima 
+16:44:26,721 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:44:26,721 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:44:26,722 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:44:26,722 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:44:37,501 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Aceitável 
+16:44:37,501 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:44:37,502 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:44:37,503 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:44:37,503 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:44:46,129 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:44:46,130 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:44:46,132 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:44:46,132 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:44:46,133 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:49:52,638 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:49:52,638 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:49:52,639 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:49:52,639 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:49:52,640 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:49:52,642 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:49:52,642 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:49:52,642 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:49:52,643 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:49:52,643 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:50:04,147 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:50:04,148 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:50:04,149 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:50:04,149 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:50:04,150 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:50:05,577 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:51:48,720 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:51:48,722 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:51:48,722 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:51:48,723 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:51:48,723 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:51:48,726 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:51:48,726 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:51:48,727 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor: 
+16:51:48,727 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:51:48,728 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:52:19,741 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:52:19,741 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:52:19,742 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput 
+16:52:19,743 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:52:19,743 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:52:21,393 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:52:47,141 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:52:47,141 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:52:47,142 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput 
+16:52:47,143 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:52:47,143 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:52:47,145 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:52:47,145 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:52:47,146 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput 
+16:52:47,146 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:52:47,147 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:52:52,766 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:52:52,766 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:52:52,767 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+16:52:52,767 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:52:52,768 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:52:55,246 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+16:53:29,970 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:53:29,971 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:53:29,971 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+16:53:29,971 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:53:29,972 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+16:53:29,975 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+16:53:29,975 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+16:53:29,976 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+16:53:29,976 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+16:53:29,977 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:09:36,140 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:09:36,141 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:09:36,141 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:09:36,142 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:09:36,142 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:09:36,145 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:09:36,146 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:09:36,146 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:09:36,147 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:09:36,147 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:09:49,806 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+17:11:55,281 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:11:55,281 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:11:55,282 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:11:55,282 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:11:55,283 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:11:55,285 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:11:55,286 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:11:55,286 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:11:55,287 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:11:55,288 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:12:02,465 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+17:12:38,730 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:12:38,731 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:12:38,733 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:12:38,734 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:12:38,735 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:12:38,739 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:12:38,739 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:12:38,740 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:12:38,741 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:12:38,742 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:14:08,086 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:14:08,087 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:14:08,088 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:14:08,088 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:14:08,089 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:14:08,093 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:14:08,093 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:14:08,094 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:14:08,094 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:14:08,095 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:14:11,544 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+17:14:45,252 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:14:45,252 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:14:45,252 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:14:45,253 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:14:45,253 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:14:45,255 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:14:45,256 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:14:45,256 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:14:45,257 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:14:45,257 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:14:46,025 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+17:14:48,330 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:14:48,330 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:14:48,332 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:14:48,332 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:14:48,333 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:14:48,336 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+17:14:48,336 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+17:14:48,337 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+17:14:48,337 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+17:14:48,338 02/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+17:14:49,034 02/11/2020 >> Main.vi >> Botão Sair pressionado 
+07:03:40,185 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:03:40,186 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:03:40,187 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:03:40,188 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:03:40,189 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:03:40,192 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:03:40,194 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:03:40,197 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:03:40,197 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:03:40,198 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:03:48,688 13/11/2020 >> Main.vi >> Botão Sair pressionado 
+07:05:31,007 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:05:31,008 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:05:31,010 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:05:31,011 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:05:31,013 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:05:31,024 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:05:31,025 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:05:31,027 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:05:31,028 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:05:31,030 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:05:40,780 13/11/2020 >> Main.vi >> Botão Sair pressionado 
+07:06:00,064 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:06:00,065 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:06:00,068 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:06:00,069 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:06:00,071 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:06:00,080 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:06:00,081 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:06:00,084 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:06:00,085 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:06:00,087 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:06:09,425 13/11/2020 >> Main.vi >> Botão Sair pressionado 
+07:06:13,037 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:06:13,037 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:06:13,038 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:06:13,039 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:06:13,040 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:06:13,046 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:06:13,046 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:06:13,047 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:06:13,048 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:06:13,049 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:07:18,650 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:07:18,652 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:07:18,657 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:07:18,659 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:07:18,662 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:07:18,674 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:07:18,676 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:07:18,680 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:07:18,682 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:07:18,685 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:07:24,102 13/11/2020 >> Main.vi >> Botão Sair pressionado 
+07:07:35,899 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:07:35,901 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:07:35,902 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:07:35,904 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:07:35,906 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> LEITURA: Seção: Caminhos, Chave: Arquivo de log, Valor: 
+07:07:35,915 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Nível Qualidade, Valor:Ruim 
+07:07:35,916 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Simulações, Chave: Turno, Valor:Turno 2 
+07:07:35,919 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Pasta com imagens, Valor:D:\Imagens adex\FFOutput\Basler acA2440-75uc (22744045)_20201015_171550535_0001.tif.tif 
+07:07:35,920 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Captura de Imagens, Chave: Mostrar imagens capturadas, Valor:TRUE 
+07:07:35,923 13/11/2020 >> Configurações.lvlib:Att configurações.vi >> ATUALIZADO: Seção: Caminhos, Chave: Arquivo de log, Valor: 
